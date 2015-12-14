@@ -1,3 +1,3 @@
 language: objective-c
 script:
-  - xctool -project OnboardingControllerExamples/OnboardingControllerExamples.xcodeproj -sdk iphonesimulator -scheme OnboardingControllerExamples build
+  - xctool -project OnboardingControllerExamples.xcodeproj -sdk iphonesimulator -scheme OnboardingControllerExamples build
