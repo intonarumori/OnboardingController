@@ -1,6 +1,7 @@
 # OnboardingController
 
 [![Build Status](https://travis-ci.org/intonarumori/OnboardingController.svg)](https://travis-ci.org/intonarumori/OnboardingController)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/intonarumori/OnboardingController/blob/master/LICENSE)
 
 OnboardingController is a Swift 2.0 component for iOS applications to help you create the onboarding flow of your awesome app.
 
