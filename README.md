@@ -1,5 +1,7 @@
 # OnboardingController
 
+[![Build Status](https://travis-ci.org/intonarumori/OnboardingController.svg)](https://travis-ci.org/intonarumori/OnboardingController)
+
 OnboardingController is a Swift 2.0 component for iOS applications to help you create the onboarding flow of your awesome app.
 
 
