@@ -1,3 +1,3 @@
 language: objective-c
-xcode_project: OnboardingControllerExample.xcodeproj
-xcode_scheme: OnboardingControllerExample
+xcode_project: OnboardingControllerExamples.xcodeproj
+xcode_scheme: OnboardingControllerExamples
