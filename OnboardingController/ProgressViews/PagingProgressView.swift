@@ -32,6 +32,10 @@ class PagingProgressView: UIView, OnboardingProgressView {
         }
     }
     
+    convenience init() {
+        self.init(frame:CGRectMake(0, 0, 100, 50))
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -50,6 +54,8 @@ class PagingProgressView: UIView, OnboardingProgressView {
     func createPageControl() {
         let pageControl = UIPageControl()
         pageControl.frame = self.bounds
+        pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
+        pageControl.currentPageIndicatorTintColor = UIColor.blackColor()
         pageControl.userInteractionEnabled = false
         pageControl.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         self.addSubview(pageControl)
@@ -59,6 +65,7 @@ class PagingProgressView: UIView, OnboardingProgressView {
     func createSkipButton() {
         let button = UIButton()
         button.setTitle("Skip", forState: .Normal)
+        button.setTitleColor(UIColor.blackColor(), forState: .Normal)
         button.titleLabel?.font = UIFont.systemFontOfSize(14.0)
         button.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(button)
