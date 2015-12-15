@@ -34,30 +34,23 @@ class ExamplesViewController: UITableViewController {
             ExampleItem(title: "Parallax with progress fading", action: { () -> Void in
                 
                 let progressView = PagingProgressView()
-                progressView.fadeSkipButtonOnLastPage = true
-                progressView.fadePageControlOnLastPage = true
-                progressView.pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
-                progressView.pageControl.currentPageIndicatorTintColor = UIColor.blackColor()
-                progressView.skipButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
                 progressView.skipButton.addTarget(self, action: Selector("closeOnboarding"), forControlEvents: .TouchUpInside)
                 
-                let firstViewController = BoxViewController(titleText: "Oberheim DX", bodyText: "For the west coast funk flavor", image: UIImage(named: "obi-dx.png"))
-                let secondViewcontroller = BoxViewController(titleText: "Roland TR-909", bodyText: "Rocking house dancefloors since the 80s", image: UIImage(named: "tr-909.png"))
-                let thirdViewController = BoxViewController(titleText: "Roland TR-808", bodyText: "For the ultimate earth shaking kick drum", image: UIImage(named: "tr-808.png"))
-                thirdViewController.buttonText = "Go!"
-                thirdViewController.buttonHandler = {
-                    (arg:BoxViewController) -> Void in
-                    self.closeOnboarding()
-                }
-                
                 let onboardingController = OnboardingController(
-                    viewControllers: [firstViewController, secondViewcontroller, thirdViewController],
+                    viewControllers: [
+                        WelcomeViewController(),
+                        LocationSharingViewController(),
+                        BackgroundDescriptionViewController(),
+                        PagingProgressViewDescriptionViewController()
+                    ],
                     backgroundContentView: ParallaxImageBackgroundView(image: UIImage(named:"white-wood.jpg")!),
                     progressView: progressView
                 )
                 self.presentViewController(onboardingController, animated: true, completion: nil)
                 
-            }),
+            })
+            /*
+            ,
             ExampleItem(title: "Parallax without fading", action: { () -> Void in
                 
                 let progressView = PagingProgressView()
@@ -146,6 +139,7 @@ class ExamplesViewController: UITableViewController {
                 )
                 self.presentViewController(onboardingController, animated: true, completion: nil)
             }),
+*/
         ]
     }
 
