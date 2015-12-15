@@ -66,7 +66,7 @@ class PagingProgressView: UIView, OnboardingProgressView {
         let button = UIButton()
         button.setTitle("Skip", forState: .Normal)
         button.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        button.titleLabel?.font = UIFont.systemFontOfSize(14.0)
+        button.titleLabel?.font = UIFont.boldSystemFontOfSize(14.0)
         button.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(button)
         
