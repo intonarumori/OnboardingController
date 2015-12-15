@@ -112,7 +112,8 @@ class OnboardingController: UIViewController, UIPageViewControllerDataSource, UI
         self.pageViewController.dataSource = self
 
         if let progressView = self.progressView {
-            progressView.frame = CGRectMake(0, self.view.bounds.size.height-50, self.view.bounds.size.width, 50)
+            let progressViewHeight = progressView.frame.size.height
+            progressView.frame = CGRectMake(0, self.view.bounds.size.height-progressViewHeight, self.view.bounds.size.width, progressViewHeight)
             progressView.autoresizingMask = [.FlexibleWidth, .FlexibleTopMargin]
             self.view.addSubview(progressView)
         }
