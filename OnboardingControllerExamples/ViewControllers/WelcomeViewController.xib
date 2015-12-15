@@ -27,10 +27,17 @@
                         <action selector="next" destination="-1" eventType="touchUpInside" id="LSh-Ko-Jwh"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the OnboardingController example" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14E-oX-q5Q">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is an onboarding flow created with the OnboardingController library." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14E-oX-q5Q">
                     <rect key="frame" x="86" y="290" width="239" height="61"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcG-eH-Zy5">
+                    <rect key="frame" x="86" y="209" width="239" height="41"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="34"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -40,8 +47,11 @@
             <constraints>
                 <constraint firstItem="14E-oX-q5Q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="86" id="3dd-eZ-PhH"/>
                 <constraint firstItem="Gmi-cK-Cgf" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="4jh-ji-bhO"/>
+                <constraint firstAttribute="trailing" secondItem="VcG-eH-Zy5" secondAttribute="trailing" constant="85" id="9cZ-MP-4mo"/>
                 <constraint firstItem="Gmi-cK-Cgf" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="1.4" id="TWD-KZ-Chg"/>
+                <constraint firstItem="VcG-eH-Zy5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="86" id="Vle-UT-HNS"/>
                 <constraint firstItem="Gmi-cK-Cgf" firstAttribute="top" secondItem="14E-oX-q5Q" secondAttribute="bottom" constant="40" id="cu5-bf-CMr"/>
+                <constraint firstItem="14E-oX-q5Q" firstAttribute="top" secondItem="VcG-eH-Zy5" secondAttribute="bottom" constant="40" id="eQf-YD-zPs"/>
                 <constraint firstAttribute="trailing" secondItem="14E-oX-q5Q" secondAttribute="trailing" constant="85" id="ibV-fV-eLJ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

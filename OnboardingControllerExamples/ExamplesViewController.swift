@@ -162,6 +162,7 @@ class ExamplesViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell")!
         cell.textLabel?.text = self.items![indexPath.row].title
+        cell.textLabel?.textAlignment = .Center
         return cell
     }
     

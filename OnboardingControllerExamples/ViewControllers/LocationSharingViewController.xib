@@ -29,8 +29,8 @@
                         <action selector="next" destination="-1" eventType="touchUpInside" id="2HY-UC-wG2"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZP-Xc-DYI">
-                    <rect key="frame" x="75.5" y="391" width="211" height="58"/>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZP-Xc-DYI">
+                    <rect key="frame" x="75" y="391" width="211" height="58"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
@@ -39,10 +39,17 @@
                         <action selector="requestLocationAccess" destination="-1" eventType="touchUpInside" id="noc-ZD-Zo0"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can prime users for location sharing using your custom viewcontroller and buttons" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUF-ob-hHs">
-                    <rect key="frame" x="62" y="269.5" width="239" height="81.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For example you can prime users for location acess like this." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUF-ob-hHs">
+                    <rect key="frame" x="62" y="290" width="239" height="61"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Add any view controller to your flow" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qs-8J-DjN">
+                    <rect key="frame" x="62" y="77" width="239" height="122"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="34"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -57,6 +64,9 @@
                 <constraint firstItem="9x1-cA-82Q" firstAttribute="top" secondItem="PZP-Xc-DYI" secondAttribute="bottom" constant="30" id="R2c-sK-ydR"/>
                 <constraint firstItem="JUF-ob-hHs" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="bIa-5X-RD5"/>
                 <constraint firstItem="PZP-Xc-DYI" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="1.4" id="csH-AO-JWN"/>
+                <constraint firstAttribute="trailing" secondItem="0qs-8J-DjN" secondAttribute="trailing" constant="62" id="dFN-8p-hcc"/>
+                <constraint firstItem="0qs-8J-DjN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="62" id="e5D-Nf-7RG"/>
+                <constraint firstItem="JUF-ob-hHs" firstAttribute="top" secondItem="0qs-8J-DjN" secondAttribute="bottom" constant="30.5" id="mWa-o3-os8"/>
                 <constraint firstAttribute="trailing" secondItem="JUF-ob-hHs" secondAttribute="trailing" constant="62" id="sbn-Hy-BUH"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

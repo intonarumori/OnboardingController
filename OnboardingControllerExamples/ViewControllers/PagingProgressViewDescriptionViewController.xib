@@ -18,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXH-7K-igQ">
-                    <rect key="frame" x="167.5" y="391" width="75" height="58"/>
+                    <rect key="frame" x="167" y="391" width="75" height="58"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
@@ -27,10 +27,17 @@
                         <action selector="next" destination="-1" eventType="touchUpInside" id="vxB-m8-JAH"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can also customize your progress bar at the bottom. For this example we used the built in PagingProgressView." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x27-yP-G6i">
-                    <rect key="frame" x="89" y="269.5" width="239" height="81.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="For this example we used the built in paging progress view." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x27-yP-G6i">
+                    <rect key="frame" x="89" y="309" width="239" height="41"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Customize the progress bar" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LuD-Cc-oGr">
+                    <rect key="frame" x="80" y="190.5" width="250" height="81.5"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="34"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -39,9 +46,12 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="x27-yP-G6i" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="89" id="0Im-oq-RBb"/>
+                <constraint firstAttribute="trailing" secondItem="LuD-Cc-oGr" secondAttribute="trailing" constant="80" id="0wT-vy-bHq"/>
                 <constraint firstItem="nXH-7K-igQ" firstAttribute="top" secondItem="x27-yP-G6i" secondAttribute="bottom" constant="40" id="1AR-YP-Nc4"/>
                 <constraint firstAttribute="trailing" secondItem="x27-yP-G6i" secondAttribute="trailing" constant="82" id="5Mg-XB-I3H"/>
                 <constraint firstItem="nXH-7K-igQ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="8mv-rc-5e4"/>
+                <constraint firstItem="x27-yP-G6i" firstAttribute="top" secondItem="LuD-Cc-oGr" secondAttribute="bottom" constant="37.5" id="IpK-KO-Leo"/>
+                <constraint firstItem="LuD-Cc-oGr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="80" id="L0N-qX-rlu"/>
                 <constraint firstItem="nXH-7K-igQ" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="1.4" id="OD1-le-YGe"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
