@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BackgroundDescriptionViewController" customModule="OnboardingControllerExamples" customModuleProvider="target">
+            <connections>
+                <outlet property="button" destination="QNC-iG-pFu" id="eNG-nK-Zvj"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="410" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNC-iG-pFu">
+                    <rect key="frame" x="168" y="391" width="75" height="58"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                    <state key="normal" title="Next"/>
+                    <connections>
+                        <action selector="next" destination="-1" eventType="touchUpInside" id="LOY-tu-ZsL"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can customize the background view of the onboarding.  For this example we used the ParallaxBackgroundView" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGH-QW-nOo">
+                    <rect key="frame" x="86" y="229" width="239" height="122"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="eGH-QW-nOo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="86" id="OF5-Cg-QsF"/>
+                <constraint firstItem="QNC-iG-pFu" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="XkT-GM-3Gf"/>
+                <constraint firstItem="QNC-iG-pFu" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="1.4" id="dL3-ys-mJc"/>
+                <constraint firstAttribute="trailing" secondItem="eGH-QW-nOo" secondAttribute="trailing" constant="85" id="omT-OS-rGs"/>
+                <constraint firstItem="QNC-iG-pFu" firstAttribute="top" secondItem="eGH-QW-nOo" secondAttribute="bottom" constant="40" id="sph-iU-n8X"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>
