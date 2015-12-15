@@ -89,15 +89,11 @@ public class BoxViewController: UIViewController, OnboardingAnimatedContentViewC
     }
     
     func moveToNext() {
-        if let onboardingController = self.onboardingController() {
-            onboardingController.moveToNext(true)
-        }
+        self.onboardingController()?.moveToNext(true)
     }
     
     func moveToPrevious() {
-        if let onboardingController = self.onboardingController() {
-            onboardingController.moveToPrevious(true)
-        }
+        self.onboardingController()?.moveToPrevious(true)
     }
 }
 
