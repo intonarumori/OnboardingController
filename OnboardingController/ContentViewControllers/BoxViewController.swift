@@ -69,10 +69,6 @@ public class BoxViewController: UIViewController, OnboardingAnimatedContentViewC
         self.updateImageViewHorizontalCenterConstraint()
     }
 
-    override public func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-    }
-    
     func updateImageViewHorizontalCenterConstraint() {
         
         if let image = self.imageView!.image {
