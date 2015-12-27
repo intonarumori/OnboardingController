@@ -43,7 +43,7 @@ class ExamplesViewController: UITableViewController {
                         BackgroundDescriptionViewController(),
                         PagingProgressViewDescriptionViewController()
                     ],
-                    backgroundContentView: ParallaxImageBackgroundView(image: UIImage(named:"white-wood.jpg")!),
+                    backgroundContentView: ParallaxImageBackgroundView(image: UIImage(named:"PanoramaTop.jpg")!),
                     progressView: progressView
                 )
                 self.presentViewController(onboardingController, animated: true, completion: nil)
@@ -141,6 +141,11 @@ class ExamplesViewController: UITableViewController {
             }),
 */
         ]
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
     // MARK: - user actions

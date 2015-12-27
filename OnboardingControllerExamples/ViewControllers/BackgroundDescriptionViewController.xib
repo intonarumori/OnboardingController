@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BackgroundDescriptionViewController" customModule="OnboardingControllerExamples" customModuleProvider="target">
@@ -18,8 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNC-iG-pFu">
-                    <rect key="frame" x="168" y="391" width="75" height="58"/>
-                    <animations/>
+                    <rect key="frame" x="168" y="381" width="75" height="58"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                     <state key="normal" title="Next"/>
@@ -28,30 +26,27 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For this onboarding flow we used parallax image scrolling. For more options check out the other examples." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGH-QW-nOo">
-                    <rect key="frame" x="86" y="269" width="239" height="81.5"/>
-                    <animations/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <rect key="frame" x="50" y="259" width="310" height="82"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customize the background" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gET-2V-6Px">
-                    <rect key="frame" x="80" y="156" width="250" height="81.5"/>
-                    <animations/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="34"/>
+                    <rect key="frame" x="80" y="145" width="250" height="82"/>
+                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="34"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="eGH-QW-nOo" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="4bj-fq-WtJ"/>
                 <constraint firstItem="gET-2V-6Px" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="80" id="67o-Bg-lfM"/>
                 <constraint firstAttribute="trailing" secondItem="gET-2V-6Px" secondAttribute="trailing" constant="80" id="A97-Jy-Dif"/>
-                <constraint firstItem="eGH-QW-nOo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="86" id="OF5-Cg-QsF"/>
+                <constraint firstItem="eGH-QW-nOo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="OF5-Cg-QsF"/>
                 <constraint firstItem="QNC-iG-pFu" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="XkT-GM-3Gf"/>
                 <constraint firstItem="eGH-QW-nOo" firstAttribute="top" secondItem="gET-2V-6Px" secondAttribute="bottom" constant="32" id="aB6-LV-BjT"/>
-                <constraint firstItem="QNC-iG-pFu" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="1.4" id="dL3-ys-mJc"/>
-                <constraint firstAttribute="trailing" secondItem="eGH-QW-nOo" secondAttribute="trailing" constant="85" id="omT-OS-rGs"/>
+                <constraint firstAttribute="trailing" secondItem="eGH-QW-nOo" secondAttribute="trailing" constant="50" id="omT-OS-rGs"/>
                 <constraint firstItem="QNC-iG-pFu" firstAttribute="top" secondItem="eGH-QW-nOo" secondAttribute="bottom" constant="40" id="sph-iU-n8X"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
