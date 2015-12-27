@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class BoxViewController: UIViewController, OnboardingAnimatedContentViewController {
+public class BoxViewController: UIViewController, OnboardingContentViewController {
 
     @IBOutlet var imageView:UIImageView?
     @IBOutlet var titleLabel:UILabel?
