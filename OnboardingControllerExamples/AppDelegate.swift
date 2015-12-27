@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 BackgroundDescriptionViewController(),
                 PagingProgressViewDescriptionViewController()
             ],
-            backgroundContentView: ParallaxImageBackgroundView(image: UIImage(named:"PanoramaTop.jpg")!),
+            backgroundContentView: ParallaxImageBackgroundView(image: UIImage(named:"PanoramaTopBlur.jpg")!),
             progressView: progressView
         )
         return onboardingController
