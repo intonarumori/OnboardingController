@@ -20,7 +20,6 @@
 		A5AC87061C1F704E00850E18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5AC87041C1F704E00850E18 /* LaunchScreen.storyboard */; };
 		A5AC87111C1F704E00850E18 /* OnboardingControllerExamplesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC87101C1F704E00850E18 /* OnboardingControllerExamplesTests.swift */; };
 		A5AC871C1C1F70F000850E18 /* ExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC871B1C1F70F000850E18 /* ExamplesViewController.swift */; };
-		A5AC87251C1F70F800850E18 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A5AC871E1C1F70F800850E18 /* background.jpg */; };
 		A5AC87261C1F70F800850E18 /* black-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A5AC871F1C1F70F800850E18 /* black-bg.jpg */; };
 		A5AC87271C1F70F800850E18 /* obi-dx.png in Resources */ = {isa = PBXBuildFile; fileRef = A5AC87201C1F70F800850E18 /* obi-dx.png */; };
 		A5AC87281C1F70F800850E18 /* sun.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A5AC87211C1F70F800850E18 /* sun.mp4 */; };
@@ -64,7 +63,6 @@
 		A5AC87101C1F704E00850E18 /* OnboardingControllerExamplesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingControllerExamplesTests.swift; sourceTree = "<group>"; };
 		A5AC87121C1F704E00850E18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5AC871B1C1F70F000850E18 /* ExamplesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplesViewController.swift; sourceTree = "<group>"; };
-		A5AC871E1C1F70F800850E18 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		A5AC871F1C1F70F800850E18 /* black-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "black-bg.jpg"; sourceTree = "<group>"; };
 		A5AC87201C1F70F800850E18 /* obi-dx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "obi-dx.png"; sourceTree = "<group>"; };
 		A5AC87211C1F70F800850E18 /* sun.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sun.mp4; sourceTree = "<group>"; };
@@ -159,7 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				A5C1DE971C305E8D00F4D7B4 /* PanoramaTop.jpg */,
-				A5AC871E1C1F70F800850E18 /* background.jpg */,
 				A5AC871F1C1F70F800850E18 /* black-bg.jpg */,
 				A5AC87201C1F70F800850E18 /* obi-dx.png */,
 				A5AC87211C1F70F800850E18 /* sun.mp4 */,
@@ -293,7 +290,6 @@
 				A56D8DE01C20AE26001B7960 /* BackgroundDescriptionViewController.xib in Resources */,
 				A5AC87281C1F70F800850E18 /* sun.mp4 in Resources */,
 				A5C1DE981C305E8D00F4D7B4 /* PanoramaTop.jpg in Resources */,
-				A5AC87251C1F70F800850E18 /* background.jpg in Resources */,
 				A5AC872B1C1F70F800850E18 /* white-wood.jpg in Resources */,
 				A5AC872A1C1F70F800850E18 /* tr-909.png in Resources */,
 				A56D8DDA1C20A1C6001B7960 /* WelcomeViewController.xib in Resources */,
