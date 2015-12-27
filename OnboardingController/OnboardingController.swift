@@ -8,10 +8,16 @@
 
 import UIKit
 
-// MARK: - UIViewController extension for accessing onboardingcontroller
+// MARK: - UIViewController extension
 
 extension UIViewController {
     
+    /**
+     Returns the parent OnboardingController if the viewcontroller is part of an onboarding flow.
+     (usage is similar to accessing UINavigationController from any UIViewController)
+     
+     - returns: the parent OnboardingController if the viewcontroller is part of an onboarding flow.
+     */
     func onboardingController() -> OnboardingController? {
         var parentViewController = self.parentViewController
         while let validParentViewController = parentViewController {
@@ -26,7 +32,7 @@ extension UIViewController {
     }
 }
 
-// MARK: - protocol for progress views
+// MARK: - OnboardingController progress view protocol
 
 protocol OnboardingProgressView {
     
@@ -34,7 +40,7 @@ protocol OnboardingProgressView {
     func setOnboardingCompletionPercent(percent:CGFloat)
 }
 
-// MARK: - protocol for background views
+// MARK: - OnboardingController background view protocol
 
 protocol OnboardingAnimatedBackgroundContentView {
     
@@ -43,15 +49,29 @@ protocol OnboardingAnimatedBackgroundContentView {
 
 // MARK: - protocol for animated content viewcontrollers
 
-protocol OnboardingAnimatedContentViewController {
-    
-    func setVisibilityPercent(percent:CGFloat) // values of [0.0,2.0]
+protocol OnboardingContentViewController {
+
+    /**
+     Returns the parent OnboardingController if the viewcontroller is part of an onboarding flow.
+     (usage is similar to accessing UINavigationController from any UIViewController)
+     
+     - parameter percent: the value of visilibity percentage. Valid values are in the [0.0, 2.0] range. Value of 0.0 means the viewcontroller is not yet visible and will come from the right, 1.0 means the viewcontroller is in the center and fully visible, while 2.0 means the viewcontroller is not visible any more and has been scrolled out of visibility and is located on the left.
+     */
+    func setVisibilityPercent(percent:CGFloat)
+}
+
+// MARK: - OnboardingController delegate protocol
+
+protocol OnboardingControllerDelegate : class {
+    func onboardingController(onboardingController:OnboardingController, didScrollToViewController viewController:UIViewController)
+    func onboardingControllerDidFinish(onboardingController:OnboardingController)
 }
 
 // MARK: -
 
 class OnboardingController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate {
 
+    weak var delegate:OnboardingControllerDelegate?
     var pageViewController:UIPageViewController!
     var progressView:UIView?
     var backgroundContentView:UIView?
@@ -181,7 +201,15 @@ class OnboardingController: UIViewController, UIPageViewControllerDataSource, UI
                 self.pageViewController.setViewControllers([nextViewController],
                     direction: .Forward,
                     animated: animated,
-                    completion: nil)
+                    completion:{ (finished) -> Void in
+                        if finished {
+                            self.sendDidScrollToViewControllerNotification()
+                        }
+                })
+            } else {
+                if let delegate = self.delegate {
+                    delegate.onboardingControllerDidFinish(self)
+                }
             }
         }
     }
@@ -193,7 +221,11 @@ class OnboardingController: UIViewController, UIPageViewControllerDataSource, UI
                 self.pageViewController.setViewControllers([previousViewController],
                     direction: .Reverse,
                     animated: animated,
-                    completion: nil)
+                    completion:{ (finished) -> Void in
+                        if finished {
+                            self.sendDidScrollToViewControllerNotification()
+                        }
+                })
             }
         }
     }
@@ -214,12 +246,34 @@ class OnboardingController: UIViewController, UIPageViewControllerDataSource, UI
         self.updatePercentagesWithScrollView(scrollView)
     }
     
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        self.scrollFinished(scrollView)
+    }
+    
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            self.scrollFinished(scrollView)
+        }
+    }
+    
+    func scrollFinished(scrollView:UIScrollView) {
+        self.sendDidScrollToViewControllerNotification()
+    }
+    
+    func sendDidScrollToViewControllerNotification() {
+        if let delegate = self.delegate {
+            if let currentViewController = self.currentViewController() {
+                delegate.onboardingController(self, didScrollToViewController: currentViewController)
+            }
+        }
+    }
+    
     func updatePercentagesWithScrollView(scrollView:UIScrollView)
     {
         // update viewcontrollers
         for viewController in self.viewControllers {
             if let visibilityPercent = self.visibilityPercentForViewController(scrollView, viewController: viewController) {
-                if let animatedContentViewController = viewController as? OnboardingAnimatedContentViewController {
+                if let animatedContentViewController = viewController as? OnboardingContentViewController {
                     animatedContentViewController.setVisibilityPercent(visibilityPercent)
                 }
             }
