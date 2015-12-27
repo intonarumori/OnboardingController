@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OnboardingControllerDeleg
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.backgroundColor = UIColor.whiteColor()
 
-        let onboardingController = self.createOnboardingController()
+        let onboardingController = self.createMainOnboardingControllerExample()
         onboardingController.delegate = self
         
         let navigationController = UINavigationController(rootViewController: onboardingController)
@@ -32,10 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OnboardingControllerDeleg
         return true
     }
     
-    func createOnboardingController() -> OnboardingController {
+    func createMainOnboardingControllerExample() -> OnboardingController {
 
         let progressView = PagingProgressView()
-        progressView.skipButton.addTarget(self, action: Selector("jumpToExamples"), forControlEvents: .TouchUpInside)
+        progressView.skipButton.addTarget(self, action: Selector("skipOnboarding"), forControlEvents: .TouchUpInside)
         
         let onboardingController = OnboardingController(
             viewControllers: [
@@ -50,7 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OnboardingControllerDeleg
         return onboardingController
     }
     
-    func jumpToExamples() {
+    func skipOnboarding() {
+        // replace the onboardingcontroller with the examples viewcontroller
         self.navigationController?.setViewControllers([ExamplesViewController()], animated: true)
     }
     
@@ -62,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OnboardingControllerDeleg
     }
     
     func onboardingControllerDidFinish(onboardingController: OnboardingController) {
-        self.jumpToExamples()
+        self.skipOnboarding()
     }
 }
 
