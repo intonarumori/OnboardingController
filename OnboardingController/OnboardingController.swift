@@ -13,10 +13,10 @@ import UIKit
 extension UIViewController {
     
     /**
-     Returns the parent OnboardingController if the viewcontroller is part of an onboarding flow.
-     (usage is similar to accessing UINavigationController from any UIViewController)
+     Returns the parent `OnboardingController` if the view controller is part of an onboarding flow.
+     (usage is similar to accessing `UINavigationController` from any `UIViewController`)
      
-     - returns: the parent OnboardingController if the viewcontroller is part of an onboarding flow.
+     - returns: the parent `OnboardingController` if the view controller is part of an onboarding flow
      */
     func onboardingController() -> OnboardingController? {
         var parentViewController = self.parentViewController
