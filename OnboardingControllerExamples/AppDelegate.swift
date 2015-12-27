@@ -9,7 +9,7 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, OnboardingControllerDelegate {
 
     var window: UIWindow?
     var navigationController:UINavigationController?
@@ -20,12 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.backgroundColor = UIColor.whiteColor()
 
         let onboardingController = self.createOnboardingController()
+        onboardingController.delegate = self
+        
         let navigationController = UINavigationController(rootViewController: onboardingController)
         navigationController.navigationBarHidden = true
         self.navigationController = navigationController
 
         self.window?.rootViewController = navigationController
-        
         self.window?.makeKeyAndVisible()
         
         return true
@@ -51,6 +52,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func jumpToExamples() {
         self.navigationController?.setViewControllers([ExamplesViewController()], animated: true)
+    }
+    
+    // MARK: -
+    
+    func onboardingController(onboardingController: OnboardingController, didScrollToViewController viewController: UIViewController) {
+        print("OnboardingController did scroll to viewController: \(viewController)")
+    }
+    
+    func onboardingControllerDidFinish(onboardingController: OnboardingController) {
+        self.jumpToExamples()
     }
 }
 
