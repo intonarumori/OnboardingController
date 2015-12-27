@@ -57,7 +57,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OnboardingControllerDeleg
     // MARK: -
     
     func onboardingController(onboardingController: OnboardingController, didScrollToViewController viewController: UIViewController) {
-        print("OnboardingController did scroll to viewController: \(viewController)")
+        // whenever onboardingcontroller scrolls and stops at a viewcontroller, this delegate method will be called
+        // print("OnboardingController did scroll to viewController: \(viewController)")
     }
     
     func onboardingControllerDidFinish(onboardingController: OnboardingController) {
