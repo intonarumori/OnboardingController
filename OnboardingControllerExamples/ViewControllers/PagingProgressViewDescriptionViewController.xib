@@ -17,10 +17,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXH-7K-igQ">
-                    <rect key="frame" x="167" y="361" width="75" height="58"/>
+                    <rect key="frame" x="166" y="361" width="78" height="58"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
-                    <state key="normal" title="Next"/>
+                    <state key="normal" title="Done"/>
                     <connections>
                         <action selector="next" destination="-1" eventType="touchUpInside" id="vxB-m8-JAH"/>
                     </connections>
