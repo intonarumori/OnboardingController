@@ -136,10 +136,10 @@
 		A5AC86FA1C1F704E00850E18 /* OnboardingControllerExamples */ = {
 			isa = PBXGroup;
 			children = (
+				A5AC86FB1C1F704E00850E18 /* AppDelegate.swift */,
+				A5AC871B1C1F70F000850E18 /* ExamplesViewController.swift */,
 				A56D8DD21C209C92001B7960 /* MainOnboardingExample */,
 				A5AC871D1C1F70F800850E18 /* Resources */,
-				A5AC871B1C1F70F000850E18 /* ExamplesViewController.swift */,
-				A5AC86FB1C1F704E00850E18 /* AppDelegate.swift */,
 				A5AC87021C1F704E00850E18 /* Assets.xcassets */,
 				A5AC87041C1F704E00850E18 /* LaunchScreen.storyboard */,
 				A5AC87071C1F704E00850E18 /* Info.plist */,
