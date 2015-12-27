@@ -8,7 +8,7 @@
 
 import UIKit
 
-// MARK: - make onboardingviewcontroller
+// MARK: - UIViewController extension for accessing onboardingcontroller
 
 extension UIViewController {
     
@@ -45,7 +45,7 @@ protocol OnboardingAnimatedBackgroundContentView {
 
 protocol OnboardingAnimatedContentViewController {
     
-    func setVisibilityPercent(percent:CGFloat)
+    func setVisibilityPercent(percent:CGFloat) // values of [0.0,2.0]
 }
 
 // MARK: -
@@ -56,7 +56,7 @@ class OnboardingController: UIViewController, UIPageViewControllerDataSource, UI
     var progressView:UIView?
     var backgroundContentView:UIView?
     var viewControllers:Array<UIViewController> = []
-    var disableScrollViewUpdates:Bool = false
+    var scrollViewUpdatesEnabled:Bool = true
     
     init(viewControllers:Array<UIViewController>, backgroundContentView:UIView? = nil, progressView:UIView? = nil) {
         super.init(nibName: nil, bundle: nil)
@@ -208,7 +208,7 @@ class OnboardingController: UIViewController, UIPageViewControllerDataSource, UI
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
 
-        if disableScrollViewUpdates {
+        guard scrollViewUpdatesEnabled else {
             return
         }
         self.updatePercentagesWithScrollView(scrollView)
@@ -299,11 +299,11 @@ class OnboardingController: UIViewController, UIPageViewControllerDataSource, UI
     // MARK: - rotation
     
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        self.disableScrollViewUpdates = true
+        self.scrollViewUpdatesEnabled = false
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        self.disableScrollViewUpdates = false
+        self.scrollViewUpdatesEnabled = true
         if let scrollView = self.pageViewControllerScrollView() {
             self.updatePercentagesWithScrollView(scrollView)
         }
@@ -338,5 +338,4 @@ class OnboardingController: UIViewController, UIPageViewControllerDataSource, UI
         }
         return nil
     }
-    
 }
