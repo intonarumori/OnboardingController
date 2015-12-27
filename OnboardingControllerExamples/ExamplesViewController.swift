@@ -27,7 +27,6 @@ class ExamplesViewController: UITableViewController {
         super.viewDidLoad()
         
         self.title = "Onboarding examples"
-
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
 
         self.items = [
@@ -157,11 +156,17 @@ class ExamplesViewController: UITableViewController {
     // MARK: - tableview delegate/datasource
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.items == nil ? 0 : 1
+        if self.items != nil {
+            return 1
+        }
+        return 0
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items != nil ? self.items!.count : 0
+        if let items = self.items {
+            return items.count
+        }
+        return 0
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
