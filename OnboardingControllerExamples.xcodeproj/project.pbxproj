@@ -33,6 +33,7 @@
 		A5AC87391C1F710200850E18 /* BoxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5AC87321C1F710200850E18 /* BoxViewController.xib */; };
 		A5AC873A1C1F710200850E18 /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC87331C1F710200850E18 /* OnboardingController.swift */; };
 		A5AC873B1C1F710200850E18 /* PagingProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC87351C1F710200850E18 /* PagingProgressView.swift */; };
+		A5C1DE981C305E8D00F4D7B4 /* PanoramaTop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A5C1DE971C305E8D00F4D7B4 /* PanoramaTop.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		A5AC87321C1F710200850E18 /* BoxViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BoxViewController.xib; sourceTree = "<group>"; };
 		A5AC87331C1F710200850E18 /* OnboardingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingController.swift; sourceTree = "<group>"; };
 		A5AC87351C1F710200850E18 /* PagingProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingProgressView.swift; sourceTree = "<group>"; };
+		A5C1DE971C305E8D00F4D7B4 /* PanoramaTop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PanoramaTop.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 		A5AC871D1C1F70F800850E18 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A5C1DE971C305E8D00F4D7B4 /* PanoramaTop.jpg */,
 				A5AC871E1C1F70F800850E18 /* background.jpg */,
 				A5AC871F1C1F70F800850E18 /* black-bg.jpg */,
 				A5AC87201C1F70F800850E18 /* obi-dx.png */,
@@ -289,6 +292,7 @@
 				A56D8DE41C20AF73001B7960 /* PagingProgressViewDescriptionViewController.xib in Resources */,
 				A56D8DE01C20AE26001B7960 /* BackgroundDescriptionViewController.xib in Resources */,
 				A5AC87281C1F70F800850E18 /* sun.mp4 in Resources */,
+				A5C1DE981C305E8D00F4D7B4 /* PanoramaTop.jpg in Resources */,
 				A5AC87251C1F70F800850E18 /* background.jpg in Resources */,
 				A5AC872B1C1F70F800850E18 /* white-wood.jpg in Resources */,
 				A5AC872A1C1F70F800850E18 /* tr-909.png in Resources */,
