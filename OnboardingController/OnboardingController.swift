@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - UIViewController extension
 
-extension UIViewController {
+internal extension UIViewController {
     
     /**
      Returns the parent `OnboardingController` if the view controller is part of an onboarding flow.
@@ -34,7 +34,7 @@ extension UIViewController {
 
 // MARK: - OnboardingController progress view protocol
 
-protocol OnboardingProgressView {
+public protocol OnboardingProgressView {
     
     func setNumberOfViewControllersInOnboarding(numberOfViewControllers:Int)
     func setOnboardingCompletionPercent(percent:CGFloat)
@@ -42,14 +42,14 @@ protocol OnboardingProgressView {
 
 // MARK: - OnboardingController background view protocol
 
-protocol OnboardingAnimatedBackgroundContentView {
+public protocol OnboardingAnimatedBackgroundContentView {
     
     func setOnboardingCompletionPercent(percent:CGFloat)
 }
 
 // MARK: - protocol for animated content viewcontrollers
 
-protocol OnboardingContentViewController {
+public protocol OnboardingContentViewController {
 
     /**
      Returns the parent OnboardingController if the viewcontroller is part of an onboarding flow.
@@ -62,21 +62,21 @@ protocol OnboardingContentViewController {
 
 // MARK: - OnboardingController delegate protocol
 
-protocol OnboardingControllerDelegate : class {
+public protocol OnboardingControllerDelegate : class {
     func onboardingController(onboardingController:OnboardingController, didScrollToViewController viewController:UIViewController)
     func onboardingControllerDidFinish(onboardingController:OnboardingController)
 }
 
 // MARK: -
 
-class OnboardingController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate {
+public class OnboardingController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate {
 
-    weak var delegate:OnboardingControllerDelegate?
-    var pageViewController:UIPageViewController!
-    var progressView:UIView?
-    var backgroundContentView:UIView?
-    var viewControllers:Array<UIViewController> = []
-    var scrollViewUpdatesEnabled:Bool = true
+    public weak var delegate:OnboardingControllerDelegate?
+    public private(set) var pageViewController:UIPageViewController!
+    public private(set) var progressView:UIView?
+    public private(set) var backgroundContentView:UIView?
+    private var viewControllers:Array<UIViewController> = []
+    private var scrollViewUpdatesEnabled:Bool = true
     
     init(viewControllers:Array<UIViewController>, backgroundContentView:UIView? = nil, progressView:UIView? = nil) {
         super.init(nibName: nil, bundle: nil)
@@ -85,11 +85,11 @@ class OnboardingController: UIViewController, UIPageViewControllerDataSource, UI
         self.viewControllers = viewControllers
     }
     
-    convenience required init?(coder aDecoder: NSCoder) {
+    public convenience required init?(coder aDecoder: NSCoder) {
         self.init(viewControllers:[])
     }
     
-    override func loadView() {
+    public override func loadView() {
         let defaultSize = CGSizeMake(400, 600)
         let view = UIView(frame: CGRectMake(0, 0, defaultSize.width, defaultSize.height))
         view.backgroundColor = UIColor.whiteColor()
@@ -156,7 +156,7 @@ class OnboardingController: UIViewController, UIPageViewControllerDataSource, UI
         }
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         if let firstViewController = self.viewControllers.first {
@@ -179,11 +179,11 @@ class OnboardingController: UIViewController, UIPageViewControllerDataSource, UI
     
     // MARK: -
     
-    func installScrollViewDelegate() {
+    private func installScrollViewDelegate() {
         self.pageViewControllerScrollView()?.delegate = self
     }
     
-    func pageViewControllerScrollView() -> UIScrollView? {
+    private func pageViewControllerScrollView() -> UIScrollView? {
         for subview in self.pageViewController.view.subviews {
             if let scrollView = subview as? UIScrollView {
                 return scrollView
@@ -194,7 +194,7 @@ class OnboardingController: UIViewController, UIPageViewControllerDataSource, UI
     
     // MARK: -
     
-    func moveToNext(animated:Bool = false) {
+    public func moveToNext(animated:Bool = false) {
 
         if let currentViewController = self.currentViewController() {
             if let nextViewController = self.viewControllerAfterViewController(currentViewController) {
@@ -214,7 +214,7 @@ class OnboardingController: UIViewController, UIPageViewControllerDataSource, UI
         }
     }
     
-    func moveToPrevious(animated:Bool = false) {
+    public func moveToPrevious(animated:Bool = false) {
 
         if let currentViewController = self.currentViewController() {
             if let previousViewController = self.viewControllerBeforeViewController(currentViewController) {
@@ -232,13 +232,13 @@ class OnboardingController: UIViewController, UIPageViewControllerDataSource, UI
     
     // MARK: -
     
-    func currentViewController() -> UIViewController? {
+    private func currentViewController() -> UIViewController? {
         return self.pageViewController.viewControllers?.first
     }
     
     // MARK: -
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    public func scrollViewDidScroll(scrollView: UIScrollView) {
 
         guard scrollViewUpdatesEnabled else {
             return
@@ -246,21 +246,21 @@ class OnboardingController: UIViewController, UIPageViewControllerDataSource, UI
         self.updatePercentagesWithScrollView(scrollView)
     }
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         self.scrollFinished(scrollView)
     }
     
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
             self.scrollFinished(scrollView)
         }
     }
     
-    func scrollFinished(scrollView:UIScrollView) {
+    private func scrollFinished(scrollView:UIScrollView) {
         self.sendDidScrollToViewControllerNotification()
     }
     
-    func sendDidScrollToViewControllerNotification() {
+    private func sendDidScrollToViewControllerNotification() {
         if let delegate = self.delegate {
             if let currentViewController = self.currentViewController() {
                 delegate.onboardingController(self, didScrollToViewController: currentViewController)
@@ -268,7 +268,7 @@ class OnboardingController: UIViewController, UIPageViewControllerDataSource, UI
         }
     }
     
-    func updatePercentagesWithScrollView(scrollView:UIScrollView)
+    private func updatePercentagesWithScrollView(scrollView:UIScrollView)
     {
         // update viewcontrollers
         for viewController in self.viewControllers {
@@ -292,7 +292,7 @@ class OnboardingController: UIViewController, UIPageViewControllerDataSource, UI
     
     // MARK: -
     
-    func onboardingProgressPercent(scrollView:UIScrollView) -> CGFloat? {
+    private func onboardingProgressPercent(scrollView:UIScrollView) -> CGFloat? {
         if let currentViewController = self.currentViewController() {
             if let visibilityPercent = visibilityPercentForViewController(scrollView, viewController: currentViewController) {
                 if let index = self.indexForViewController(currentViewController) {
@@ -309,7 +309,7 @@ class OnboardingController: UIViewController, UIPageViewControllerDataSource, UI
     }
     
     
-    func visibilityPercentForViewController(scrollView:UIScrollView, viewController:UIViewController) -> CGFloat? {
+    private func visibilityPercentForViewController(scrollView:UIScrollView, viewController:UIViewController) -> CGFloat? {
 
         if viewController.isViewLoaded() {
 
@@ -334,29 +334,29 @@ class OnboardingController: UIViewController, UIPageViewControllerDataSource, UI
     
     // MARK: - pageviewcontroller delegate
     
-    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+    public func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
     }
     
-    func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [UIViewController]) {
+    public func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [UIViewController]) {
     }
     
     // MARK: - pageviewcontroller datasource
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+    public func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         return self.viewControllerAfterViewController(viewController)
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+    public func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         return self.viewControllerBeforeViewController(viewController)
     }
     
     // MARK: - rotation
     
-    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+    public override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
         self.scrollViewUpdatesEnabled = false
     }
     
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+    public override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         self.scrollViewUpdatesEnabled = true
         if let scrollView = self.pageViewControllerScrollView() {
             self.updatePercentagesWithScrollView(scrollView)
@@ -365,15 +365,15 @@ class OnboardingController: UIViewController, UIPageViewControllerDataSource, UI
     
     // MARK: -
     
-    func numberOfViewControllers() -> Int {
+    private func numberOfViewControllers() -> Int {
         return self.viewControllers.count
     }
     
-    func indexForViewController(viewController:UIViewController) -> Int? {
+    private func indexForViewController(viewController:UIViewController) -> Int? {
         return self.viewControllers.indexOf(viewController)
     }
     
-    func viewControllerBeforeViewController(viewController:UIViewController) -> UIViewController? {
+    private func viewControllerBeforeViewController(viewController:UIViewController) -> UIViewController? {
         if let index = self.viewControllers.indexOf(viewController) {
             let previousIndex = index - 1
             if previousIndex >= 0 {
@@ -383,7 +383,7 @@ class OnboardingController: UIViewController, UIPageViewControllerDataSource, UI
         return nil
     }
     
-    func viewControllerAfterViewController(viewController:UIViewController) -> UIViewController? {
+   private func viewControllerAfterViewController(viewController:UIViewController) -> UIViewController? {
         if let index = self.viewControllers.indexOf(viewController) {
             let nextIndex = index + 1
             if nextIndex < self.viewControllers.count {

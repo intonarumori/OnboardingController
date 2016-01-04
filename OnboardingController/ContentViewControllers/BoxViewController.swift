@@ -59,7 +59,7 @@ public class BoxViewController: UIViewController, OnboardingContentViewControlle
     
     // MARK: - OnboardingAnimatedContentViewController
     
-    func setVisibilityPercent(percent: CGFloat) {
+    public func setVisibilityPercent(percent: CGFloat) {
         self.currentVisibilityPercent = percent
         self.updateImageViewHorizontalCenterConstraint()
     }

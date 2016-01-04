@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PagingProgressView: UIView, OnboardingProgressView {
+public class PagingProgressView: UIView, OnboardingProgressView {
 
     var pageControl:UIPageControl!
     var skipButton:UIButton!
@@ -32,11 +32,11 @@ class PagingProgressView: UIView, OnboardingProgressView {
         }
     }
     
-    convenience init() {
+    public convenience init() {
         self.init(frame:CGRectMake(0, 0, 100, 50))
     }
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         
         self.backgroundColor = UIColor.clearColor()
@@ -45,7 +45,7 @@ class PagingProgressView: UIView, OnboardingProgressView {
         self.createSkipButton()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -88,19 +88,19 @@ class PagingProgressView: UIView, OnboardingProgressView {
     
     // MARK: -
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         self.pageControl.frame = self.bounds
     }
     
     // MARK: -
     
-    func setNumberOfViewControllersInOnboarding(numberOfViewControllers: Int) {
+    public func setNumberOfViewControllersInOnboarding(numberOfViewControllers: Int) {
         self.numberOfPages = numberOfViewControllers
         self.pageControl.numberOfPages = self.numberOfPages
     }
     
-    func setOnboardingCompletionPercent(percent: CGFloat) {
+    public func setOnboardingCompletionPercent(percent: CGFloat) {
         
         let index = self.pageIndexForCompletionPercent(percent)
         
@@ -113,7 +113,7 @@ class PagingProgressView: UIView, OnboardingProgressView {
         }
     }
     
-    func updateFading() {
+    private func updateFading() {
         if fadePageControlOnLastPage {
             if self.currentPage == (self.numberOfPages - 1) {
                 UIView.animateWithDuration(0.3, animations: { () -> Void in
@@ -129,7 +129,7 @@ class PagingProgressView: UIView, OnboardingProgressView {
         }
     }
     
-    func updateSkipFading() {
+    private func updateSkipFading() {
         if fadeSkipButtonOnLastPage {
             if self.currentPage == (self.numberOfPages - 1) {
                 UIView.animateWithDuration(0.3, animations: { () -> Void in
@@ -145,7 +145,7 @@ class PagingProgressView: UIView, OnboardingProgressView {
         }
     }
     
-    func pageIndexForCompletionPercent(percent:CGFloat) -> Int {
+    private func pageIndexForCompletionPercent(percent:CGFloat) -> Int {
         let rangeForPage = 1.0 / CGFloat(numberOfPages - 1)
         let index = Int(round( (percent) / rangeForPage ))
         return index

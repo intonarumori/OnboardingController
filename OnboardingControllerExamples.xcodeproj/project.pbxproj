@@ -57,7 +57,7 @@
 		A56D8DE21C20AF73001B7960 /* PagingProgressViewDescriptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PagingProgressViewDescriptionViewController.xib; sourceTree = "<group>"; };
 		A5AC86F81C1F704E00850E18 /* OnboardingControllerExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnboardingControllerExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5AC86FB1C1F704E00850E18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A5AC87021C1F704E00850E18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A5AC87021C1F704E00850E18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		A5AC87051C1F704E00850E18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5AC87071C1F704E00850E18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5AC870C1C1F704E00850E18 /* OnboardingControllerExamplesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnboardingControllerExamplesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,12 +136,10 @@
 		A5AC86FA1C1F704E00850E18 /* OnboardingControllerExamples */ = {
 			isa = PBXGroup;
 			children = (
+				A5AC871D1C1F70F800850E18 /* Resources */,
+				A56D8DD21C209C92001B7960 /* MainOnboardingExample */,
 				A5AC86FB1C1F704E00850E18 /* AppDelegate.swift */,
 				A5AC871B1C1F70F000850E18 /* ExamplesViewController.swift */,
-				A56D8DD21C209C92001B7960 /* MainOnboardingExample */,
-				A5AC871D1C1F70F800850E18 /* Resources */,
-				A5AC87021C1F704E00850E18 /* Assets.xcassets */,
-				A5AC87041C1F704E00850E18 /* LaunchScreen.storyboard */,
 				A5AC87071C1F704E00850E18 /* Info.plist */,
 			);
 			path = OnboardingControllerExamples;
@@ -159,6 +157,8 @@
 		A5AC871D1C1F70F800850E18 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A5AC87021C1F704E00850E18 /* Assets.xcassets */,
+				A5AC87041C1F704E00850E18 /* LaunchScreen.storyboard */,
 				A5C1DE991C3061AF00F4D7B4 /* PanoramaTopBlur.jpg */,
 				A5C1DE971C305E8D00F4D7B4 /* PanoramaTop.jpg */,
 				A5AC871F1C1F70F800850E18 /* black-bg.jpg */,
@@ -360,6 +360,7 @@
 				A5AC87051C1F704E00850E18 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
