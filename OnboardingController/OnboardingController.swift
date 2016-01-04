@@ -72,11 +72,13 @@ public protocol OnboardingControllerDelegate : class {
 public class OnboardingController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate {
 
     public weak var delegate:OnboardingControllerDelegate?
-    public private(set) var pageViewController:UIPageViewController!
+    
     public private(set) var progressView:UIView?
     public private(set) var backgroundContentView:UIView?
-    private var viewControllers:Array<UIViewController> = []
+    public private(set) var viewControllers:Array<UIViewController> = []
+    
     private var scrollViewUpdatesEnabled:Bool = true
+    public private(set) var pageViewController:UIPageViewController!
     
     init(viewControllers:Array<UIViewController>, backgroundContentView:UIView? = nil, progressView:UIView? = nil) {
         super.init(nibName: nil, bundle: nil)
