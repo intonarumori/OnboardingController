@@ -80,7 +80,7 @@ public class OnboardingController: UIViewController, UIPageViewControllerDataSou
     private var scrollViewUpdatesEnabled:Bool = true
     public private(set) var pageViewController:UIPageViewController!
     
-    init(viewControllers:Array<UIViewController>, backgroundContentView:UIView? = nil, progressView:UIView? = nil) {
+    public init(viewControllers:Array<UIViewController>, backgroundContentView:UIView? = nil, progressView:UIView? = nil) {
         super.init(nibName: nil, bundle: nil)
         self.backgroundContentView = backgroundContentView
         self.progressView = progressView
