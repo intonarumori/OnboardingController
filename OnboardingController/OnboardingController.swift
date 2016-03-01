@@ -85,6 +85,7 @@ public class OnboardingController: UIViewController, UIPageViewControllerDataSou
         self.backgroundContentView = backgroundContentView
         self.progressView = progressView
         self.viewControllers = viewControllers
+        self.automaticallyAdjustsScrollViewInsets = false
     }
     
     public convenience required init?(coder aDecoder: NSCoder) {
