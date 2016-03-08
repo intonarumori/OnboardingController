@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - UIViewController extension
 
-internal extension UIViewController {
+public extension UIViewController {
     
     /**
      Returns the parent `OnboardingController` if the view controller is part of an onboarding flow.
