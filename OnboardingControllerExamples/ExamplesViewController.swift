@@ -8,17 +8,7 @@
 
 import UIKit
 
-class ExampleItem {
-    var title:String = ""
-    var action:Void->Void
-    
-    init(title:String, action:Void->Void) {
-        self.title = title
-        self.action = action
-    }
-}
-
-class ExamplesViewController: UITableViewController {
+class ExamplesViewController: UITableViewController, OnboardingControllerDelegate {
 
     var items:Array<ExampleItem>?
     
@@ -30,7 +20,7 @@ class ExamplesViewController: UITableViewController {
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
 
         self.items = [
-            ExampleItem(title: "Parallax with progress fading", action: { () -> Void in
+            ExampleItem(title: "Parallax with progress fading", action: { _ in
                 
                 let progressView = PagingProgressView()
                 progressView.skipButton.addTarget(self, action: Selector("closeOnboarding"), forControlEvents: .TouchUpInside)
@@ -45,6 +35,7 @@ class ExamplesViewController: UITableViewController {
                     backgroundContentView: ParallaxImageBackgroundView(image: UIImage(named:"PanoramaTop.jpg")!),
                     progressView: progressView
                 )
+                onboardingController.delegate = self
                 self.presentViewController(onboardingController, animated: true, completion: nil)
                 
             })
@@ -142,6 +133,9 @@ class ExamplesViewController: UITableViewController {
         ]
     }
     
+    
+    // MARK: - View lifecycle
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -150,6 +144,15 @@ class ExamplesViewController: UITableViewController {
     // MARK: - user actions
     
     func closeOnboarding() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // MARK: - OnboardingController delegate
+    
+    func onboardingController(onboardingController: OnboardingController, didScrollToViewController viewController: UIViewController) {
+    }
+    
+    func onboardingControllerDidFinish(onboardingController: OnboardingController) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -182,5 +185,19 @@ class ExamplesViewController: UITableViewController {
             let item = items[indexPath.row]
             item.action()
         }
+    }
+}
+
+
+// MARK: -
+
+/// Helper class for the example list
+class ExampleItem {
+    var title:String = ""
+    var action:Void->Void
+    
+    init(title:String, action:Void->Void) {
+        self.title = title
+        self.action = action
     }
 }
