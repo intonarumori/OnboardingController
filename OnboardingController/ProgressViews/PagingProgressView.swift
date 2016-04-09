@@ -56,10 +56,21 @@ public class PagingProgressView: UIView, OnboardingProgressViewProtocol {
         pageControl.frame = self.bounds
         pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
         pageControl.currentPageIndicatorTintColor = UIColor.blackColor()
-        pageControl.userInteractionEnabled = false
         pageControl.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        pageControl.addTarget(self, action: Selector("pageValueChanged:"), forControlEvents: .ValueChanged)
         self.addSubview(pageControl)
+        
+        
         self.pageControl = pageControl
+    }
+    
+    func pageValueChanged(pageControl:UIPageControl) {
+        if currentPage < pageControl.currentPage {
+            self.onboardingController?.moveToNext(true)
+        }
+        else if currentPage > pageControl.currentPage {
+            self.onboardingController?.moveToPrevious(true)
+        }
     }
     
     func createSkipButton() {

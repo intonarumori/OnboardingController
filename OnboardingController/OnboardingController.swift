@@ -42,6 +42,23 @@ public protocol OnboardingProgressViewProtocol: class {
     func setOnboardingCompletionPercent(percent:CGFloat)
 }
 
+extension OnboardingProgressViewProtocol where Self: UIResponder {
+
+    var onboardingController:OnboardingController? {
+        get {
+            var currentResponder:UIResponder? = self.nextResponder()
+            while let validResponder = currentResponder {
+                
+                if let onboardingController = validResponder as? OnboardingController {
+                    return onboardingController
+                }
+                currentResponder = validResponder.nextResponder()
+            }
+            return nil
+        }
+    }
+}
+
 // MARK: - OnboardingController background view protocol
 
 public protocol OnboardingAnimatedBackgroundContentView {
