@@ -51,4 +51,8 @@ class ModalExampleViewController: UIViewController, EmptyModalViewControllerDele
     func emptyModalViewController(didFinish exampleModalViewController: EmptyModalViewController) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
 }

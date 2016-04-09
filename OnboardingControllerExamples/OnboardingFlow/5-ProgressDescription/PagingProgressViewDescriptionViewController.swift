@@ -27,4 +27,9 @@ class PagingProgressViewDescriptionViewController: UIViewController {
     @IBAction func next() {
         self.onboardingController?.moveToNext(true)
     }
+    
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
 }
