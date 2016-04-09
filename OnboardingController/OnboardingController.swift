@@ -36,7 +36,7 @@ public extension UIViewController {
 
 // MARK: - OnboardingController progress view protocol
 
-public protocol OnboardingProgressView {
+public protocol OnboardingProgressViewProtocol: class {
     
     func setNumberOfViewControllersInOnboarding(numberOfViewControllers:Int)
     func setOnboardingCompletionPercent(percent:CGFloat)
@@ -173,7 +173,7 @@ public class OnboardingController: UIViewController, UIPageViewControllerDataSou
                 completion: nil)
         }
         
-        if let animatedProgressView = self.progressView as? OnboardingProgressView {
+        if let animatedProgressView = self.progressView as? OnboardingProgressViewProtocol {
             animatedProgressView.setNumberOfViewControllersInOnboarding(self.viewControllers.count)
         }
         
@@ -320,7 +320,7 @@ public class OnboardingController: UIViewController, UIPageViewControllerDataSou
             if let animatedBackgroundContentView = self.backgroundContentView as? OnboardingAnimatedBackgroundContentView {
                 animatedBackgroundContentView.setOnboardingCompletionPercent(onboardingProgressPercent)
             }
-            if let animatedProgressView = self.progressView as? OnboardingProgressView {
+            if let animatedProgressView = self.progressView as? OnboardingProgressViewProtocol {
                 animatedProgressView.setOnboardingCompletionPercent(onboardingProgressPercent)
             }
         }

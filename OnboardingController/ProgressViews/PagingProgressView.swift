@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class PagingProgressView: UIView, OnboardingProgressView {
+public class PagingProgressView: UIView, OnboardingProgressViewProtocol {
 
     var pageControl:UIPageControl!
     var skipButton:UIButton!
