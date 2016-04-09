@@ -18,17 +18,19 @@ public extension UIViewController {
      
      - returns: the parent `OnboardingController` if the view controller is part of an onboarding flow
      */
-    func onboardingController() -> OnboardingController? {
-        var parentViewController = self.parentViewController
-        while let validParentViewController = parentViewController {
-            
-            if let onboardingViewController = validParentViewController as? OnboardingController {
-                return onboardingViewController
-            } else {
-                parentViewController = validParentViewController.parentViewController
+    var onboardingController:OnboardingController? {
+        get {
+            var parentViewController = self.parentViewController
+            while let validParentViewController = parentViewController {
+                
+                if let onboardingViewController = validParentViewController as? OnboardingController {
+                    return onboardingViewController
+                } else {
+                    parentViewController = validParentViewController.parentViewController
+                }
             }
+            return nil
         }
-        return nil
     }
 }
 
