@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OnboardingControllerDeleg
     func createMainOnboardingControllerExample() -> OnboardingController {
 
         let progressView = PagingProgressView()
-        progressView.skipButton.addTarget(self, action: Selector("skipOnboarding"), forControlEvents: .TouchUpInside)
+        progressView.skipButton.addTarget(self, action: #selector(skipOnboarding), forControlEvents: .TouchUpInside)
         
         let onboardingController = OnboardingController(
             viewControllers: [

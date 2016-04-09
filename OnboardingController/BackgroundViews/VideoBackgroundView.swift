@@ -40,10 +40,13 @@ class VideoBackgroundView: UIView {
     
     func startListeningToApplicationNotifications() {
         
-        NSNotificationCenter.defaultCenter().addObserver(self,
-            selector: Selector("handleAppEnteredForeground"),
+        /*
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(handleAppEnteredForeground),
             name: UIApplicationWillEnterForegroundNotification,
             object: nil)
+         */
     }
     
     func stopListeningToApplicationNotifications() {

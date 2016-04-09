@@ -20,10 +20,10 @@ class ExamplesViewController: UITableViewController, OnboardingControllerDelegat
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
 
         self.items = [
-            ExampleItem(title: "Parallax with progress fading", action: { _ in
+            ExampleItem(title: "Parallax with progress fading", action: { [weak self] _ in
                 
                 let progressView = PagingProgressView()
-                progressView.skipButton.addTarget(self, action: Selector("closeOnboarding"), forControlEvents: .TouchUpInside)
+                progressView.skipButton.addTarget(self, action: #selector(self?.closeOnboarding), forControlEvents: .TouchUpInside)
                 
                 let onboardingController = OnboardingController(
                     viewControllers: [
@@ -36,7 +36,7 @@ class ExamplesViewController: UITableViewController, OnboardingControllerDelegat
                     progressView: progressView
                 )
                 onboardingController.delegate = self
-                self.presentViewController(onboardingController, animated: true, completion: nil)
+                self?.presentViewController(onboardingController, animated: true, completion: nil)
                 
             })
             /*
@@ -49,7 +49,7 @@ class ExamplesViewController: UITableViewController, OnboardingControllerDelegat
                 progressView.pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
                 progressView.pageControl.currentPageIndicatorTintColor = UIColor.blackColor()
                 progressView.skipButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-                progressView.skipButton.addTarget(self, action: Selector("closeOnboarding"), forControlEvents: .TouchUpInside)
+                progressView.skipButton.addTarget(self, action: #selector(closeOnboarding), forControlEvents: .TouchUpInside)
                 
                 let firstViewController = BoxViewController(titleText: "Oberheim DX", bodyText: "For the west coast funk flavor", image: UIImage(named: "obi-dx.png"))
                 let secondViewcontroller = BoxViewController(titleText: "Roland TR-909", bodyText: "Rocking house dancefloors since the 80s", image: UIImage(named: "tr-909.png"))
@@ -117,7 +117,7 @@ class ExamplesViewController: UITableViewController, OnboardingControllerDelegat
                 
                 let videoURL = NSBundle.mainBundle().URLForResource("sun", withExtension: "mp4")!
                 let progressView = PagingProgressView()
-                progressView.skipButton.addTarget(self, action: Selector("closeOnboarding"), forControlEvents: .TouchUpInside)
+                progressView.skipButton.addTarget(self, action: #selector(closeOnboarding), forControlEvents: .TouchUpInside)
                 let onboardingController = OnboardingController(
                     viewControllers: [
                         BoxViewController(titleText: "First page", bodyText: "First page body", image: nil),

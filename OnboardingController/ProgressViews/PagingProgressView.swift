@@ -57,7 +57,7 @@ public class PagingProgressView: UIView, OnboardingProgressViewProtocol {
         pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
         pageControl.currentPageIndicatorTintColor = UIColor.blackColor()
         pageControl.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        pageControl.addTarget(self, action: Selector("pageValueChanged:"), forControlEvents: .ValueChanged)
+        pageControl.addTarget(self, action: #selector(pageValueChanged), forControlEvents: .ValueChanged)
         self.addSubview(pageControl)
         
         
