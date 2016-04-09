@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OnboardingControllerDeleg
         let onboardingController = self.createMainOnboardingControllerExample()
         onboardingController.delegate = self
         
+        // create a UINavigationController so we can transition to the examples list later
         let navigationController = UINavigationController(rootViewController: onboardingController)
         navigationController.navigationBarHidden = true
         self.navigationController = navigationController
@@ -39,8 +40,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OnboardingControllerDeleg
         
         let onboardingController = OnboardingController(
             viewControllers: [
+                //UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewControllerWithIdentifier("Example1"),
                 WelcomeViewController(),
                 LocationSharingViewController(),
+                ModalExampleViewController(),
                 BackgroundDescriptionViewController(),
                 PagingProgressViewDescriptionViewController()
             ],
@@ -51,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OnboardingControllerDeleg
     }
     
     func skipOnboarding() {
-        // replace the onboardingcontroller with the examples viewcontroller
+        // replace the onboardingcontroller with the example list
         self.navigationController?.setViewControllers([ExamplesViewController()], animated: true)
     }
     
