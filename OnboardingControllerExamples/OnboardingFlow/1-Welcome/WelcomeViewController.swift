@@ -1,5 +1,5 @@
 //
-//  BackgroundDescriptionViewController.swift
+//  WelcomeViewController.swift
 //  OnboardingControllerExamples
 //
 //  Created by Daniel Langh on 15/12/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BackgroundDescriptionViewController: UIViewController {
+class WelcomeViewController: UIViewController {
 
     @IBOutlet var button:UIButton?
     
@@ -25,6 +25,10 @@ class BackgroundDescriptionViewController: UIViewController {
     }
     
     @IBAction func next() {
-        self.onboardingController()?.moveToNext(true)
+        self.onboardingController?.moveToNext(true)
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
 }

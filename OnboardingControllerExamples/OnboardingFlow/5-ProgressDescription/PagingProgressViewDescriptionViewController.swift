@@ -25,6 +25,6 @@ class PagingProgressViewDescriptionViewController: UIViewController {
     }
     
     @IBAction func next() {
-        self.onboardingController()?.moveToNext(true)
+        self.onboardingController?.moveToNext(true)
     }
 }

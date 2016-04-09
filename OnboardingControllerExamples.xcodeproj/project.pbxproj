@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A56D8DD51C209CBF001B7960 /* LocationSharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D8DD31C209CBF001B7960 /* LocationSharingViewController.swift */; };
-		A56D8DD61C209CBF001B7960 /* LocationSharingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A56D8DD41C209CBF001B7960 /* LocationSharingViewController.xib */; };
-		A56D8DD91C20A1C6001B7960 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D8DD71C20A1C6001B7960 /* WelcomeViewController.swift */; };
-		A56D8DDA1C20A1C6001B7960 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A56D8DD81C20A1C6001B7960 /* WelcomeViewController.xib */; };
-		A56D8DDF1C20AE26001B7960 /* BackgroundDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D8DDD1C20AE26001B7960 /* BackgroundDescriptionViewController.swift */; };
-		A56D8DE01C20AE26001B7960 /* BackgroundDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A56D8DDE1C20AE26001B7960 /* BackgroundDescriptionViewController.xib */; };
-		A56D8DE31C20AF73001B7960 /* PagingProgressViewDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D8DE11C20AF73001B7960 /* PagingProgressViewDescriptionViewController.swift */; };
-		A56D8DE41C20AF73001B7960 /* PagingProgressViewDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A56D8DE21C20AF73001B7960 /* PagingProgressViewDescriptionViewController.xib */; };
+		A558E8A21CB9094B00ECEA01 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A558E8921CB9094B00ECEA01 /* WelcomeViewController.swift */; };
+		A558E8A31CB9094B00ECEA01 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A558E8931CB9094B00ECEA01 /* WelcomeViewController.xib */; };
+		A558E8A41CB9094B00ECEA01 /* LocationSharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A558E8951CB9094B00ECEA01 /* LocationSharingViewController.swift */; };
+		A558E8A51CB9094B00ECEA01 /* LocationSharingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A558E8961CB9094B00ECEA01 /* LocationSharingViewController.xib */; };
+		A558E8A61CB9094B00ECEA01 /* EmptyModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A558E8981CB9094B00ECEA01 /* EmptyModalViewController.swift */; };
+		A558E8A71CB9094B00ECEA01 /* EmptyModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A558E8991CB9094B00ECEA01 /* EmptyModalViewController.xib */; };
+		A558E8A81CB9094B00ECEA01 /* ModalExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A558E89A1CB9094B00ECEA01 /* ModalExampleViewController.swift */; };
+		A558E8A91CB9094B00ECEA01 /* ModalExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A558E89B1CB9094B00ECEA01 /* ModalExampleViewController.xib */; };
+		A558E8AA1CB9094B00ECEA01 /* BackgroundDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A558E89D1CB9094B00ECEA01 /* BackgroundDescriptionViewController.swift */; };
+		A558E8AB1CB9094B00ECEA01 /* BackgroundDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A558E89E1CB9094B00ECEA01 /* BackgroundDescriptionViewController.xib */; };
+		A558E8AC1CB9094B00ECEA01 /* PagingProgressViewDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A558E8A01CB9094B00ECEA01 /* PagingProgressViewDescriptionViewController.swift */; };
+		A558E8AD1CB9094B00ECEA01 /* PagingProgressViewDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A558E8A11CB9094B00ECEA01 /* PagingProgressViewDescriptionViewController.xib */; };
+		A558E8B01CB9095100ECEA01 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A558E8AF1CB9095100ECEA01 /* Onboarding.storyboard */; };
 		A5AC86FC1C1F704E00850E18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC86FB1C1F704E00850E18 /* AppDelegate.swift */; };
 		A5AC87031C1F704E00850E18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5AC87021C1F704E00850E18 /* Assets.xcassets */; };
 		A5AC87061C1F704E00850E18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5AC87041C1F704E00850E18 /* LaunchScreen.storyboard */; };
@@ -47,14 +52,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A56D8DD31C209CBF001B7960 /* LocationSharingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSharingViewController.swift; sourceTree = "<group>"; };
-		A56D8DD41C209CBF001B7960 /* LocationSharingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationSharingViewController.xib; sourceTree = "<group>"; };
-		A56D8DD71C20A1C6001B7960 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		A56D8DD81C20A1C6001B7960 /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
-		A56D8DDD1C20AE26001B7960 /* BackgroundDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundDescriptionViewController.swift; sourceTree = "<group>"; };
-		A56D8DDE1C20AE26001B7960 /* BackgroundDescriptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackgroundDescriptionViewController.xib; sourceTree = "<group>"; };
-		A56D8DE11C20AF73001B7960 /* PagingProgressViewDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingProgressViewDescriptionViewController.swift; sourceTree = "<group>"; };
-		A56D8DE21C20AF73001B7960 /* PagingProgressViewDescriptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PagingProgressViewDescriptionViewController.xib; sourceTree = "<group>"; };
+		A558E8921CB9094B00ECEA01 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		A558E8931CB9094B00ECEA01 /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
+		A558E8951CB9094B00ECEA01 /* LocationSharingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSharingViewController.swift; sourceTree = "<group>"; };
+		A558E8961CB9094B00ECEA01 /* LocationSharingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationSharingViewController.xib; sourceTree = "<group>"; };
+		A558E8981CB9094B00ECEA01 /* EmptyModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyModalViewController.swift; sourceTree = "<group>"; };
+		A558E8991CB9094B00ECEA01 /* EmptyModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyModalViewController.xib; sourceTree = "<group>"; };
+		A558E89A1CB9094B00ECEA01 /* ModalExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalExampleViewController.swift; sourceTree = "<group>"; };
+		A558E89B1CB9094B00ECEA01 /* ModalExampleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModalExampleViewController.xib; sourceTree = "<group>"; };
+		A558E89D1CB9094B00ECEA01 /* BackgroundDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundDescriptionViewController.swift; sourceTree = "<group>"; };
+		A558E89E1CB9094B00ECEA01 /* BackgroundDescriptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackgroundDescriptionViewController.xib; sourceTree = "<group>"; };
+		A558E8A01CB9094B00ECEA01 /* PagingProgressViewDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingProgressViewDescriptionViewController.swift; sourceTree = "<group>"; };
+		A558E8A11CB9094B00ECEA01 /* PagingProgressViewDescriptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PagingProgressViewDescriptionViewController.xib; sourceTree = "<group>"; };
+		A558E8AF1CB9095100ECEA01 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		A5AC86F81C1F704E00850E18 /* OnboardingControllerExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnboardingControllerExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5AC86FB1C1F704E00850E18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5AC87021C1F704E00850E18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
@@ -98,19 +108,70 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A56D8DD21C209C92001B7960 /* MainOnboardingExample */ = {
+		A558E8901CB9094B00ECEA01 /* OnboardingFlow */ = {
 			isa = PBXGroup;
 			children = (
-				A56D8DD71C20A1C6001B7960 /* WelcomeViewController.swift */,
-				A56D8DD81C20A1C6001B7960 /* WelcomeViewController.xib */,
-				A56D8DD31C209CBF001B7960 /* LocationSharingViewController.swift */,
-				A56D8DD41C209CBF001B7960 /* LocationSharingViewController.xib */,
-				A56D8DDD1C20AE26001B7960 /* BackgroundDescriptionViewController.swift */,
-				A56D8DDE1C20AE26001B7960 /* BackgroundDescriptionViewController.xib */,
-				A56D8DE11C20AF73001B7960 /* PagingProgressViewDescriptionViewController.swift */,
-				A56D8DE21C20AF73001B7960 /* PagingProgressViewDescriptionViewController.xib */,
+				A558E8911CB9094B00ECEA01 /* 1-Welcome */,
+				A558E8941CB9094B00ECEA01 /* 2-LocationSharing */,
+				A558E8971CB9094B00ECEA01 /* 3-ModalExample */,
+				A558E89C1CB9094B00ECEA01 /* 4-BackgroundDescription */,
+				A558E89F1CB9094B00ECEA01 /* 5-ProgressDescription */,
 			);
-			name = MainOnboardingExample;
+			path = OnboardingFlow;
+			sourceTree = "<group>";
+		};
+		A558E8911CB9094B00ECEA01 /* 1-Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				A558E8921CB9094B00ECEA01 /* WelcomeViewController.swift */,
+				A558E8931CB9094B00ECEA01 /* WelcomeViewController.xib */,
+			);
+			path = "1-Welcome";
+			sourceTree = "<group>";
+		};
+		A558E8941CB9094B00ECEA01 /* 2-LocationSharing */ = {
+			isa = PBXGroup;
+			children = (
+				A558E8951CB9094B00ECEA01 /* LocationSharingViewController.swift */,
+				A558E8961CB9094B00ECEA01 /* LocationSharingViewController.xib */,
+			);
+			path = "2-LocationSharing";
+			sourceTree = "<group>";
+		};
+		A558E8971CB9094B00ECEA01 /* 3-ModalExample */ = {
+			isa = PBXGroup;
+			children = (
+				A558E89A1CB9094B00ECEA01 /* ModalExampleViewController.swift */,
+				A558E89B1CB9094B00ECEA01 /* ModalExampleViewController.xib */,
+				A558E8981CB9094B00ECEA01 /* EmptyModalViewController.swift */,
+				A558E8991CB9094B00ECEA01 /* EmptyModalViewController.xib */,
+			);
+			path = "3-ModalExample";
+			sourceTree = "<group>";
+		};
+		A558E89C1CB9094B00ECEA01 /* 4-BackgroundDescription */ = {
+			isa = PBXGroup;
+			children = (
+				A558E89D1CB9094B00ECEA01 /* BackgroundDescriptionViewController.swift */,
+				A558E89E1CB9094B00ECEA01 /* BackgroundDescriptionViewController.xib */,
+			);
+			path = "4-BackgroundDescription";
+			sourceTree = "<group>";
+		};
+		A558E89F1CB9094B00ECEA01 /* 5-ProgressDescription */ = {
+			isa = PBXGroup;
+			children = (
+				A558E8A01CB9094B00ECEA01 /* PagingProgressViewDescriptionViewController.swift */,
+				A558E8A11CB9094B00ECEA01 /* PagingProgressViewDescriptionViewController.xib */,
+			);
+			path = "5-ProgressDescription";
+			sourceTree = "<group>";
+		};
+		A558E8AE1CB9095100ECEA01 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A558E8AF1CB9095100ECEA01 /* Onboarding.storyboard */,
+			);
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
@@ -136,8 +197,9 @@
 		A5AC86FA1C1F704E00850E18 /* OnboardingControllerExamples */ = {
 			isa = PBXGroup;
 			children = (
+				A558E8AE1CB9095100ECEA01 /* ViewControllers */,
+				A558E8901CB9094B00ECEA01 /* OnboardingFlow */,
 				A5AC871D1C1F70F800850E18 /* Resources */,
-				A56D8DD21C209C92001B7960 /* MainOnboardingExample */,
 				A5AC86FB1C1F704E00850E18 /* AppDelegate.swift */,
 				A5AC871B1C1F70F000850E18 /* ExamplesViewController.swift */,
 				A5AC87071C1F704E00850E18 /* Info.plist */,
@@ -289,21 +351,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A558E8A71CB9094B00ECEA01 /* EmptyModalViewController.xib in Resources */,
+				A558E8AD1CB9094B00ECEA01 /* PagingProgressViewDescriptionViewController.xib in Resources */,
 				A5AC87391C1F710200850E18 /* BoxViewController.xib in Resources */,
-				A56D8DE41C20AF73001B7960 /* PagingProgressViewDescriptionViewController.xib in Resources */,
-				A56D8DE01C20AE26001B7960 /* BackgroundDescriptionViewController.xib in Resources */,
+				A558E8AB1CB9094B00ECEA01 /* BackgroundDescriptionViewController.xib in Resources */,
 				A5AC87281C1F70F800850E18 /* sun.mp4 in Resources */,
 				A5C1DE981C305E8D00F4D7B4 /* PanoramaTop.jpg in Resources */,
 				A5AC872B1C1F70F800850E18 /* white-wood.jpg in Resources */,
 				A5AC872A1C1F70F800850E18 /* tr-909.png in Resources */,
-				A56D8DDA1C20A1C6001B7960 /* WelcomeViewController.xib in Resources */,
 				A5AC87061C1F704E00850E18 /* LaunchScreen.storyboard in Resources */,
 				A5AC87261C1F70F800850E18 /* black-bg.jpg in Resources */,
-				A56D8DD61C209CBF001B7960 /* LocationSharingViewController.xib in Resources */,
 				A5AC87031C1F704E00850E18 /* Assets.xcassets in Resources */,
 				A5C1DE9A1C3061AF00F4D7B4 /* PanoramaTopBlur.jpg in Resources */,
+				A558E8B01CB9095100ECEA01 /* Onboarding.storyboard in Resources */,
+				A558E8A31CB9094B00ECEA01 /* WelcomeViewController.xib in Resources */,
 				A5AC87291C1F70F800850E18 /* tr-808.png in Resources */,
+				A558E8A91CB9094B00ECEA01 /* ModalExampleViewController.xib in Resources */,
 				A5AC87271C1F70F800850E18 /* obi-dx.png in Resources */,
+				A558E8A51CB9094B00ECEA01 /* LocationSharingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,17 +386,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A56D8DD91C20A1C6001B7960 /* WelcomeViewController.swift in Sources */,
 				A5AC87381C1F710200850E18 /* BoxViewController.swift in Sources */,
+				A558E8AA1CB9094B00ECEA01 /* BackgroundDescriptionViewController.swift in Sources */,
 				A5AC86FC1C1F704E00850E18 /* AppDelegate.swift in Sources */,
-				A56D8DDF1C20AE26001B7960 /* BackgroundDescriptionViewController.swift in Sources */,
-				A56D8DD51C209CBF001B7960 /* LocationSharingViewController.swift in Sources */,
-				A56D8DE31C20AF73001B7960 /* PagingProgressViewDescriptionViewController.swift in Sources */,
+				A558E8AC1CB9094B00ECEA01 /* PagingProgressViewDescriptionViewController.swift in Sources */,
+				A558E8A61CB9094B00ECEA01 /* EmptyModalViewController.swift in Sources */,
 				A5AC873A1C1F710200850E18 /* OnboardingController.swift in Sources */,
 				A5AC871C1C1F70F000850E18 /* ExamplesViewController.swift in Sources */,
 				A5AC873B1C1F710200850E18 /* PagingProgressView.swift in Sources */,
+				A558E8A81CB9094B00ECEA01 /* ModalExampleViewController.swift in Sources */,
 				A5AC87371C1F710200850E18 /* VideoBackgroundView.swift in Sources */,
 				A5AC87361C1F710200850E18 /* ParallaxImageBackgroundView.swift in Sources */,
+				A558E8A21CB9094B00ECEA01 /* WelcomeViewController.swift in Sources */,
+				A558E8A41CB9094B00ECEA01 /* LocationSharingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

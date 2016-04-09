@@ -37,12 +37,14 @@ class LocationSharingViewController: UIViewController {
         
         let alertController = UIAlertController(title: "Location alert example", message: "Implement your location request logic in your custom viewcontroller", preferredStyle: .Alert)
         alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-        
+        alertController.addAction( UIAlertAction(title: "OK", style: .Default, handler: nil))
+    
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
+    // MARK: - User action
+    
     @IBAction func next() {
-        self.onboardingController()?.moveToNext(true)
+        self.onboardingController?.moveToNext(true)
     }
 }
