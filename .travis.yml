@@ -5,4 +5,4 @@ language: objective-c
 os: osx
 osx_image: xcode7.3
 script:
-  - xctool -project OnboardingControllerExamples.xcodeproj -sdk iphonesimulator -scheme OnboardingControllerExamples build
+  - xctool -project OnboardingControllerExamples.xcodeproj -sdk iphonesimulator -scheme OnboardingControllerExamples build test
