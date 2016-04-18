@@ -16,4 +16,5 @@ script:
     - set -o pipefail
     - xcodebuild -version
     - xcodebuild -showsdks
-    - xcodebuild -project OnboardingControllerExamples.xcodeproj -scheme OnboardingControllerExamples -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO -sdk "$SDK" build test
+    - xcodebuild -project OnboardingControllerExamples.xcodeproj -scheme OnboardingControllerExamples -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO -sdk "$SDK" build
+    - xcodebuild -project OnboardingControllerExamples.xcodeproj -scheme OnboardingControllerExamples -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO -sdk "$SDK" test
