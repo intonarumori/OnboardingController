@@ -17,13 +17,13 @@ class ExamplesViewController: UITableViewController, OnboardingControllerDelegat
         super.viewDidLoad()
         
         self.title = "Onboarding examples"
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
 
         self.items = [
             ExampleItem(title: "Parallax with progress fading", action: { [weak self] _ in
                 
                 let progressView = PagingProgressView()
-                progressView.skipButton.addTarget(self, action: #selector(self?.closeOnboarding), forControlEvents: .TouchUpInside)
+                progressView.skipButton.addTarget(self, action: #selector(self?.closeOnboarding), for: .touchUpInside)
                 
                 let onboardingController = OnboardingController(
                     viewControllers: [
@@ -36,7 +36,7 @@ class ExamplesViewController: UITableViewController, OnboardingControllerDelegat
                     progressView: progressView
                 )
                 onboardingController.delegate = self
-                self?.presentViewController(onboardingController, animated: true, completion: nil)
+                self?.present(onboardingController, animated: true, completion: nil)
                 
             })
             /*
@@ -136,7 +136,7 @@ class ExamplesViewController: UITableViewController, OnboardingControllerDelegat
     
     // MARK: - View lifecycle
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
@@ -144,45 +144,45 @@ class ExamplesViewController: UITableViewController, OnboardingControllerDelegat
     // MARK: - user actions
     
     func closeOnboarding() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - OnboardingController delegate
     
-    func onboardingController(onboardingController: OnboardingController, didScrollToViewController viewController: UIViewController) {
+    func onboardingController(_ onboardingController: OnboardingController, didScrollToViewController viewController: UIViewController) {
     }
     
-    func onboardingControllerDidFinish(onboardingController: OnboardingController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func onboardingControllerDidFinish(_ onboardingController: OnboardingController) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - tableview delegate/datasource
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         if self.items != nil {
             return 1
         }
         return 0
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let items = self.items {
             return items.count
         }
         return 0
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell")!
-        cell.textLabel?.text = self.items![indexPath.row].title
-        cell.textLabel?.textAlignment = .Center
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        cell.textLabel?.text = self.items![(indexPath as NSIndexPath).row].title
+        cell.textLabel?.textAlignment = .center
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         if let items = self.items {
-            let item = items[indexPath.row]
+            let item = items[(indexPath as NSIndexPath).row]
             item.action()
         }
     }
@@ -194,9 +194,9 @@ class ExamplesViewController: UITableViewController, OnboardingControllerDelegat
 /// Helper class for the example list
 class ExampleItem {
     var title:String = ""
-    var action:Void->Void
+    var action:(Void)->Void
     
-    init(title:String, action:Void->Void) {
+    init(title:String, action:@escaping (Void)->Void) {
         self.title = title
         self.action = action
     }

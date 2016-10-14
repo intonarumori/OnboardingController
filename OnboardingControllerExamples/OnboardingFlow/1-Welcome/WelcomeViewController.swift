@@ -16,11 +16,11 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         
         // show the onboarding background by making our view transparent
-        self.view.backgroundColor = UIColor.clearColor()
+        self.view.backgroundColor = UIColor.clear
         
         // style the button
-        self.button?.backgroundColor = UIColor.blueColor()
-        self.button?.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        self.button?.backgroundColor = UIColor.blue
+        self.button?.setTitleColor(UIColor.white, for: UIControlState())
         self.button?.layer.cornerRadius = 30.0
     }
     
@@ -28,7 +28,7 @@ class WelcomeViewController: UIViewController {
         self.onboardingController?.moveToNext(true)
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }

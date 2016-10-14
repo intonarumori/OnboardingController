@@ -21,15 +21,15 @@ class ParallaxImageBackgroundView: UIView, OnboardingAnimatedBackgroundContentVi
      - Parameter image The UIImage you want to scroll in the background
      */
     init(image:UIImage) {
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.white
         
         self.clipsToBounds = true
         
         self.imageView = UIImageView(image: image)
-        self.imageView.backgroundColor = UIColor.blueColor()
-        self.imageView.contentMode = .ScaleAspectFill
+        self.imageView.backgroundColor = UIColor.blue
+        self.imageView.contentMode = .scaleAspectFill
         self.addSubview(self.imageView)
         
         self.updateLayout()
@@ -41,7 +41,7 @@ class ParallaxImageBackgroundView: UIView, OnboardingAnimatedBackgroundContentVi
     
     // MARK: - OnboardingAnimatedBackgroundContentView methods
     
-    func setOnboardingCompletionPercent(percent: CGFloat) {
+    func setOnboardingCompletionPercent(_ percent: CGFloat) {
         self.currentCompletionPercent = percent
         self.updateLayout()
     }
@@ -56,14 +56,14 @@ class ParallaxImageBackgroundView: UIView, OnboardingAnimatedBackgroundContentVi
         
         let size = self.bounds.size
         
-        if (!CGSizeEqualToSize(size, CGSizeZero) && self.imageView.image != nil) {
+        if (!size.equalTo(CGSize.zero) && self.imageView.image != nil) {
             let imageSize = self.imageView.image!.size
             let scaleRatio = size.height / imageSize.height
             
-            let scaledSize = CGSizeMake(imageSize.width * scaleRatio, imageSize.height * scaleRatio)
+            let scaledSize = CGSize(width: imageSize.width * scaleRatio, height: imageSize.height * scaleRatio)
             
             let offsetX = -(scaledSize.width - size.width * 2.0) * currentCompletionPercent - size.width/2.0
-            self.imageView.frame = CGRectMake(offsetX, 0, scaledSize.width, scaledSize.height)
+            self.imageView.frame = CGRect(x: offsetX, y: 0, width: scaledSize.width, height: scaledSize.height)
         }
     }
 }

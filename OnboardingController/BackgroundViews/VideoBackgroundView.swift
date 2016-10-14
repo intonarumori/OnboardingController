@@ -11,7 +11,7 @@ import MediaPlayer
 
 class VideoBackgroundView: UIView {
 
-    var videoURL:NSURL!
+    var videoURL:URL!
     var moviePlayerController:MPMoviePlayerController!
     
     deinit {
@@ -19,16 +19,16 @@ class VideoBackgroundView: UIView {
         self.moviePlayerController = nil
     }
     
-    init(videoURL:NSURL) {
-        super.init(frame: CGRectZero)
+    init(videoURL:URL) {
+        super.init(frame: CGRect.zero)
         
-        self.backgroundColor = UIColor.blackColor()
+        self.backgroundColor = UIColor.black
         self.videoURL = videoURL
 
         self.moviePlayerController = MPMoviePlayerController()
         self.moviePlayerController.contentURL = self.videoURL
-        self.moviePlayerController.repeatMode = MPMovieRepeatMode.One
-        self.moviePlayerController.controlStyle = MPMovieControlStyle.None
+        self.moviePlayerController.repeatMode = MPMovieRepeatMode.one
+        self.moviePlayerController.controlStyle = MPMovieControlStyle.none
         self.addSubview(self.moviePlayerController.view)
         
         self.startPlaying()
@@ -50,8 +50,8 @@ class VideoBackgroundView: UIView {
     }
     
     func stopListeningToApplicationNotifications() {
-        NSNotificationCenter.defaultCenter().removeObserver(self,
-            name: UIApplicationWillEnterForegroundNotification,
+        NotificationCenter.default.removeObserver(self,
+            name: NSNotification.Name.UIApplicationWillEnterForeground,
             object: nil)
     }
     
@@ -60,7 +60,7 @@ class VideoBackgroundView: UIView {
     }
     
     func stopPlaying() {
-        if self.moviePlayerController.playbackState == .Playing {
+        if self.moviePlayerController.playbackState == .playing {
             self.moviePlayerController.stop()
         }
     }

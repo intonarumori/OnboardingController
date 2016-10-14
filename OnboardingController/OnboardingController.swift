@@ -20,13 +20,13 @@ public extension UIViewController {
      */
     var onboardingController:OnboardingController? {
         get {
-            var parentViewController = self.parentViewController
+            var parentViewController = self.parent
             while let validParentViewController = parentViewController {
                 
                 if let onboardingViewController = validParentViewController as? OnboardingController {
                     return onboardingViewController
                 } else {
-                    parentViewController = validParentViewController.parentViewController
+                    parentViewController = validParentViewController.parent
                 }
             }
             return nil
@@ -38,21 +38,21 @@ public extension UIViewController {
 
 public protocol OnboardingProgressViewProtocol: class {
     
-    func setNumberOfViewControllersInOnboarding(numberOfViewControllers:Int)
-    func setOnboardingCompletionPercent(percent:CGFloat)
+    func setNumberOfViewControllersInOnboarding(_ numberOfViewControllers:Int)
+    func setOnboardingCompletionPercent(_ percent:CGFloat)
 }
 
 extension OnboardingProgressViewProtocol where Self: UIResponder {
 
     var onboardingController:OnboardingController? {
         get {
-            var currentResponder:UIResponder? = self.nextResponder()
+            var currentResponder:UIResponder? = self.next
             while let validResponder = currentResponder {
                 
                 if let onboardingController = validResponder as? OnboardingController {
                     return onboardingController
                 }
-                currentResponder = validResponder.nextResponder()
+                currentResponder = validResponder.next
             }
             return nil
         }
@@ -63,7 +63,7 @@ extension OnboardingProgressViewProtocol where Self: UIResponder {
 
 public protocol OnboardingAnimatedBackgroundContentView {
     
-    func setOnboardingCompletionPercent(percent:CGFloat)
+    func setOnboardingCompletionPercent(_ percent:CGFloat)
 }
 
 // MARK: - protocol for animated content viewcontrollers
@@ -76,30 +76,30 @@ public protocol OnboardingContentViewController {
      
      - parameter percent: the value of visilibity percentage. Valid values are in the [0.0, 2.0] range. Value of 0.0 means the viewcontroller is not yet visible and will come from the right, 1.0 means the viewcontroller is in the center and fully visible, while 2.0 means the viewcontroller is not visible any more and has been scrolled out of visibility and is located on the left.
      */
-    func setVisibilityPercent(percent:CGFloat)
+    func setVisibilityPercent(_ percent:CGFloat)
 }
 
 // MARK: - OnboardingController delegate protocol
 
 public protocol OnboardingControllerDelegate : class {
-    func onboardingController(onboardingController:OnboardingController, didScrollToViewController viewController:UIViewController)
-    func onboardingControllerDidFinish(onboardingController:OnboardingController)
+    func onboardingController(_ onboardingController:OnboardingController, didScrollToViewController viewController:UIViewController)
+    func onboardingControllerDidFinish(_ onboardingController:OnboardingController)
 }
 
 // MARK: -
 
-public class OnboardingController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate {
+open class OnboardingController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate {
 
-    public weak var delegate:OnboardingControllerDelegate?
+    open weak var delegate:OnboardingControllerDelegate?
     
-    public private(set) var progressView:UIView?
-    public private(set) var backgroundContentView:UIView?
-    public private(set) var viewControllers:Array<UIViewController> = []
+    open fileprivate(set) var progressView:UIView?
+    open fileprivate(set) var backgroundContentView:UIView?
+    open fileprivate(set) var viewControllers:Array<UIViewController> = []
     
-    private weak var currentViewController:UIViewController?
+    fileprivate weak var currentViewController:UIViewController?
     
-    private var scrollViewUpdatesEnabled:Bool = true
-    public private(set) var pageViewController:UIPageViewController?
+    fileprivate var scrollViewUpdatesEnabled:Bool = true
+    open fileprivate(set) var pageViewController:UIPageViewController?
     
     public init(viewControllers:Array<UIViewController>, backgroundContentView:UIView? = nil, progressView:UIView? = nil) {
         super.init(nibName: nil, bundle: nil)
@@ -113,14 +113,14 @@ public class OnboardingController: UIViewController, UIPageViewControllerDataSou
         self.init(viewControllers:[])
     }
     
-    public override func loadView() {
-        let defaultSize = CGSizeMake(400, 600)
-        let view = UIView(frame: CGRectMake(0, 0, defaultSize.width, defaultSize.height))
-        view.backgroundColor = UIColor.whiteColor()
+    open override func loadView() {
+        let defaultSize = CGSize(width: 400, height: 600)
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: defaultSize.width, height: defaultSize.height))
+        view.backgroundColor = UIColor.white
         self.view = view
         
-        let pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
-        pageViewController.willMoveToParentViewController(self)
+        let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        pageViewController.willMove(toParentViewController: self)
         self.addChildViewController(pageViewController)
         pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(pageViewController.view)
@@ -128,64 +128,64 @@ public class OnboardingController: UIViewController, UIPageViewControllerDataSou
         
         self.view.addConstraints([
             NSLayoutConstraint(
-                item: pageViewController.view, attribute: .Top,
-                relatedBy: .Equal,
-                toItem: self.view, attribute: .Top,
+                item: pageViewController.view, attribute: .top,
+                relatedBy: .equal,
+                toItem: self.view, attribute: .top,
                 multiplier: 1.0, constant: 0.0),
             NSLayoutConstraint(
-                item: pageViewController.view, attribute: .Bottom,
-                relatedBy: .Equal,
-                toItem: self.view, attribute: .Bottom,
+                item: pageViewController.view, attribute: .bottom,
+                relatedBy: .equal,
+                toItem: self.view, attribute: .bottom,
                 multiplier: 1.0, constant: 0.0),
             NSLayoutConstraint(
-                item: pageViewController.view, attribute: .Leading,
-                relatedBy: .Equal,
-                toItem: self.view, attribute: .Leading,
+                item: pageViewController.view, attribute: .leading,
+                relatedBy: .equal,
+                toItem: self.view, attribute: .leading,
                 multiplier: 1.0, constant: 0.0),
             NSLayoutConstraint(
-                item: pageViewController.view, attribute: .Trailing,
-                relatedBy: .Equal,
-                toItem: self.view, attribute: .Trailing,
+                item: pageViewController.view, attribute: .trailing,
+                relatedBy: .equal,
+                toItem: self.view, attribute: .trailing,
                 multiplier: 1.0, constant: 0.0)
         ])
         
-        pageViewController.didMoveToParentViewController(self)
-        pageViewController.view.backgroundColor = UIColor.clearColor()
+        pageViewController.didMove(toParentViewController: self)
+        pageViewController.view.backgroundColor = UIColor.clear
         
         pageViewController.delegate = self
         pageViewController.dataSource = self
 
         if let progressView = self.progressView {
             let progressViewHeight = progressView.frame.size.height
-            progressView.frame = CGRectMake(0, self.view.bounds.size.height-progressViewHeight, self.view.bounds.size.width, progressViewHeight)
-            progressView.autoresizingMask = [.FlexibleWidth, .FlexibleTopMargin]
+            progressView.frame = CGRect(x: 0, y: self.view.bounds.size.height-progressViewHeight, width: self.view.bounds.size.width, height: progressViewHeight)
+            progressView.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
             self.view.addSubview(progressView)
         }
         
         if let backgroundContentView = self.backgroundContentView {
             backgroundContentView.translatesAutoresizingMaskIntoConstraints = false
-            self.view.insertSubview(backgroundContentView, atIndex: 0)
+            self.view.insertSubview(backgroundContentView, at: 0)
             
             self.view.addConstraints([
-                NSLayoutConstraint(item: backgroundContentView, attribute: .Top, relatedBy: .Equal,
-                    toItem: self.view, attribute: .Top, multiplier: 1.0, constant: 0.0),
-                NSLayoutConstraint(item: backgroundContentView, attribute: .Bottom, relatedBy: .Equal,
-                    toItem: self.view, attribute: .Bottom, multiplier: 1.0, constant: 0.0),
-                NSLayoutConstraint(item: backgroundContentView, attribute: .Leading, relatedBy: .Equal,
-                    toItem: self.view, attribute: .Leading, multiplier: 1.0, constant: 0.0),
-                NSLayoutConstraint(item: backgroundContentView, attribute: .Trailing, relatedBy: .Equal,
-                    toItem: self.view, attribute: .Trailing, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: backgroundContentView, attribute: .top, relatedBy: .equal,
+                    toItem: self.view, attribute: .top, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: backgroundContentView, attribute: .bottom, relatedBy: .equal,
+                    toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: backgroundContentView, attribute: .leading, relatedBy: .equal,
+                    toItem: self.view, attribute: .leading, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: backgroundContentView, attribute: .trailing, relatedBy: .equal,
+                    toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 0.0),
                 ])
             
         }
     }
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         
         if let firstViewController = self.viewControllers.first {
             self.pageViewController?.setViewControllers([firstViewController],
-                direction: .Forward,
+                direction: .forward,
                 animated: false,
                 completion: nil)
         }
@@ -203,11 +203,11 @@ public class OnboardingController: UIViewController, UIPageViewControllerDataSou
     
     // MARK: -
     
-    private func installScrollViewDelegate() {
+    fileprivate func installScrollViewDelegate() {
         self.pageViewControllerScrollView()?.delegate = self
     }
     
-    private func pageViewControllerScrollView() -> UIScrollView? {
+    fileprivate func pageViewControllerScrollView() -> UIScrollView? {
         
         guard let pageViewController = self.pageViewController else {
             return nil
@@ -223,7 +223,7 @@ public class OnboardingController: UIViewController, UIPageViewControllerDataSou
     
     // MARK: -
     
-    public func moveToNext(animated:Bool = false) {
+    open func moveToNext(_ animated:Bool = false) {
 
         guard let pageViewController = self.pageViewController else {
             return
@@ -232,7 +232,7 @@ public class OnboardingController: UIViewController, UIPageViewControllerDataSou
         if let currentViewController = self.currentViewController {
             if let nextViewController = self.viewControllerAfterViewController(currentViewController) {
                 pageViewController.setViewControllers([nextViewController],
-                    direction: .Forward,
+                    direction: .forward,
                     animated: animated,
                     completion:{ (finished) -> Void in
                         if finished {
@@ -247,7 +247,7 @@ public class OnboardingController: UIViewController, UIPageViewControllerDataSou
         }
     }
     
-    public func moveToPrevious(animated:Bool = false) {
+    open func moveToPrevious(_ animated:Bool = false) {
 
         guard let pageViewController = self.pageViewController else {
             return
@@ -256,7 +256,7 @@ public class OnboardingController: UIViewController, UIPageViewControllerDataSou
         if let currentViewController = currentViewController {
             if let previousViewController = self.viewControllerBeforeViewController(currentViewController) {
                 pageViewController.setViewControllers([previousViewController],
-                    direction: .Reverse,
+                    direction: .reverse,
                     animated: animated,
                     completion:{ (finished) -> Void in
                         if finished {
@@ -269,7 +269,7 @@ public class OnboardingController: UIViewController, UIPageViewControllerDataSou
     
     // MARK: -
     
-    public func scrollViewDidScroll(scrollView: UIScrollView) {
+    open func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
         guard scrollViewUpdatesEnabled else {
             return
@@ -277,11 +277,11 @@ public class OnboardingController: UIViewController, UIPageViewControllerDataSou
         self.updatePercentagesWithScrollView(scrollView, animated: true)
     }
     
-    public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         self.scrollFinished(scrollView)
     }
     
-    public func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    open func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
             self.scrollFinished(scrollView)
         } else {
@@ -292,17 +292,17 @@ public class OnboardingController: UIViewController, UIPageViewControllerDataSou
         }
     }
     
-    private func scrollFinished(scrollView:UIScrollView) {
+    fileprivate func scrollFinished(_ scrollView:UIScrollView) {
         self.sendDidScrollToViewControllerNotification()
     }
     
-    private func sendDidScrollToViewControllerNotification() {
+    fileprivate func sendDidScrollToViewControllerNotification() {
         if let currentViewController = currentViewController {
             delegate?.onboardingController(self, didScrollToViewController: currentViewController)
         }
     }
     
-    private func updatePercentagesWithScrollView(scrollView:UIScrollView, animated:Bool)
+    fileprivate func updatePercentagesWithScrollView(_ scrollView:UIScrollView, animated:Bool)
     {
         // update viewcontrollers
         
@@ -324,7 +324,7 @@ public class OnboardingController: UIViewController, UIPageViewControllerDataSou
             currentViewController = currentlyFocusedViewController
             
             if animated {
-                UIView.animateWithDuration(0.2, animations: { () -> Void in
+                UIView.animate(withDuration: 0.2, animations: { () -> Void in
                     self.setNeedsStatusBarAppearanceUpdate()
                 })
             } else {
@@ -345,7 +345,7 @@ public class OnboardingController: UIViewController, UIPageViewControllerDataSou
     
     // MARK: -
     
-    private func onboardingProgressPercent(scrollView:UIScrollView) -> CGFloat? {
+    fileprivate func onboardingProgressPercent(_ scrollView:UIScrollView) -> CGFloat? {
         if let currentViewController = currentViewController {
             if let visibilityPercent = visibilityPercentForViewController(scrollView, viewController: currentViewController) {
                 if let index = self.indexForViewController(currentViewController) {
@@ -362,9 +362,9 @@ public class OnboardingController: UIViewController, UIPageViewControllerDataSou
     }
     
     
-    private func visibilityPercentForViewController(scrollView:UIScrollView, viewController:UIViewController) -> CGFloat? {
+    fileprivate func visibilityPercentForViewController(_ scrollView:UIScrollView, viewController:UIViewController) -> CGFloat? {
 
-        if viewController.isViewLoaded() {
+        if viewController.isViewLoaded {
 
             let scrollViewOffsetX = scrollView.contentOffset.x
             let scrollViewWidth = scrollView.frame.size.width
@@ -372,7 +372,7 @@ public class OnboardingController: UIViewController, UIPageViewControllerDataSou
             let view = viewController.view!
             
             if(view.superview != nil) {
-                let viewOffset = view.convertPoint(CGPointZero, toView: scrollView)
+                let viewOffset = view.convert(CGPoint.zero, to: scrollView)
                 
                 let percent = (scrollViewOffsetX - viewOffset.x) / scrollViewWidth
                 let visibilityPercent = percent + 1.0
@@ -387,31 +387,31 @@ public class OnboardingController: UIViewController, UIPageViewControllerDataSou
     
     // MARK: - pageviewcontroller delegate
     
-    public func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+    open func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         print("pageViewController didFinishAnimating")
     }
     
-    public func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [UIViewController]) {
+    open func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         print("pageViewController willTransitionToViewControllers", pendingViewControllers)
     }
     
     // MARK: - pageviewcontroller datasource
     
-    public func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+    open func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         return self.viewControllerAfterViewController(viewController)
     }
     
-    public func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+    open func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         return self.viewControllerBeforeViewController(viewController)
     }
     
     // MARK: - rotation
     
-    public override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+    open override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         self.scrollViewUpdatesEnabled = false
     }
     
-    public override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+    open override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         self.scrollViewUpdatesEnabled = true
         if let scrollView = self.pageViewControllerScrollView() {
             self.updatePercentagesWithScrollView(scrollView, animated: false)
@@ -420,16 +420,16 @@ public class OnboardingController: UIViewController, UIPageViewControllerDataSou
     
     // MARK: - ViewController access by index
     
-    private func numberOfViewControllers() -> Int {
+    fileprivate func numberOfViewControllers() -> Int {
         return self.viewControllers.count
     }
     
-    private func indexForViewController(viewController:UIViewController) -> Int? {
-        return self.viewControllers.indexOf(viewController)
+    fileprivate func indexForViewController(_ viewController:UIViewController) -> Int? {
+        return self.viewControllers.index(of: viewController)
     }
     
-    private func viewControllerBeforeViewController(viewController:UIViewController) -> UIViewController? {
-        if let index = self.viewControllers.indexOf(viewController) {
+    fileprivate func viewControllerBeforeViewController(_ viewController:UIViewController) -> UIViewController? {
+        if let index = self.viewControllers.index(of: viewController) {
             let previousIndex = index - 1
             if previousIndex >= 0 {
                 return self.viewControllers[previousIndex]
@@ -438,8 +438,8 @@ public class OnboardingController: UIViewController, UIPageViewControllerDataSou
         return nil
     }
     
-    private func viewControllerAfterViewController(viewController:UIViewController) -> UIViewController? {
-        if let index = self.viewControllers.indexOf(viewController) {
+    fileprivate func viewControllerAfterViewController(_ viewController:UIViewController) -> UIViewController? {
+        if let index = self.viewControllers.index(of: viewController) {
             let nextIndex = index + 1
             if nextIndex < self.viewControllers.count {
                 return self.viewControllers[nextIndex]
@@ -450,10 +450,10 @@ public class OnboardingController: UIViewController, UIPageViewControllerDataSou
     
     // Status bar handling
     
-    override public func childViewControllerForStatusBarHidden() -> UIViewController? {
+    override open var childViewControllerForStatusBarHidden : UIViewController? {
         return currentViewController
     }
-    override public func childViewControllerForStatusBarStyle() -> UIViewController? {
+    override open var childViewControllerForStatusBarStyle : UIViewController? {
         return currentViewController
     }
 }

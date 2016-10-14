@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class PagingProgressView: UIView, OnboardingProgressViewProtocol {
+open class PagingProgressView: UIView, OnboardingProgressViewProtocol {
 
     var pageControl:UIPageControl!
     var skipButton:UIButton!
@@ -28,18 +28,18 @@ public class PagingProgressView: UIView, OnboardingProgressViewProtocol {
     }
     var skipEnabled:Bool = true {
         didSet {
-            self.skipButton.hidden = !skipEnabled
+            self.skipButton.isHidden = !skipEnabled
         }
     }
     
     public convenience init() {
-        self.init(frame:CGRectMake(0, 0, 100, 50))
+        self.init(frame:CGRect(x: 0, y: 0, width: 100, height: 50))
     }
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
 
         self.createPageControl()
         self.createSkipButton()
@@ -54,17 +54,17 @@ public class PagingProgressView: UIView, OnboardingProgressViewProtocol {
     func createPageControl() {
         let pageControl = UIPageControl()
         pageControl.frame = self.bounds
-        pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
-        pageControl.currentPageIndicatorTintColor = UIColor.blackColor()
-        pageControl.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        pageControl.addTarget(self, action: #selector(pageValueChanged), forControlEvents: .ValueChanged)
+        pageControl.pageIndicatorTintColor = UIColor.lightGray
+        pageControl.currentPageIndicatorTintColor = UIColor.black
+        pageControl.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        pageControl.addTarget(self, action: #selector(pageValueChanged), for: .valueChanged)
         self.addSubview(pageControl)
         
         
         self.pageControl = pageControl
     }
     
-    func pageValueChanged(pageControl:UIPageControl) {
+    func pageValueChanged(_ pageControl:UIPageControl) {
         if currentPage < pageControl.currentPage {
             self.onboardingController?.moveToNext(true)
         }
@@ -75,22 +75,22 @@ public class PagingProgressView: UIView, OnboardingProgressViewProtocol {
     
     func createSkipButton() {
         let button = UIButton()
-        button.setTitle("Skip", forState: .Normal)
-        button.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        button.titleLabel?.font = UIFont.boldSystemFontOfSize(14.0)
+        button.setTitle("Skip", for: UIControlState())
+        button.setTitleColor(UIColor.black, for: UIControlState())
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14.0)
         button.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(button)
         
         self.addConstraints([
             NSLayoutConstraint(
-                item: button, attribute: .Trailing,
-                relatedBy: .Equal,
-                toItem: self, attribute: .Trailing,
+                item: button, attribute: .trailing,
+                relatedBy: .equal,
+                toItem: self, attribute: .trailing,
                 multiplier: 1.0, constant: -15),
             NSLayoutConstraint(
-                item: button, attribute: .Bottom,
-                relatedBy: .Equal,
-                toItem: self, attribute: .Bottom,
+                item: button, attribute: .bottom,
+                relatedBy: .equal,
+                toItem: self, attribute: .bottom,
                 multiplier: 1.0, constant: -10)
             ])
         
@@ -99,19 +99,19 @@ public class PagingProgressView: UIView, OnboardingProgressViewProtocol {
     
     // MARK: -
     
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         self.pageControl.frame = self.bounds
     }
     
     // MARK: -
     
-    public func setNumberOfViewControllersInOnboarding(numberOfViewControllers: Int) {
+    open func setNumberOfViewControllersInOnboarding(_ numberOfViewControllers: Int) {
         self.numberOfPages = numberOfViewControllers
         self.pageControl.numberOfPages = self.numberOfPages
     }
     
-    public func setOnboardingCompletionPercent(percent: CGFloat) {
+    open func setOnboardingCompletionPercent(_ percent: CGFloat) {
         
         let index = self.pageIndexForCompletionPercent(percent)
         
@@ -124,14 +124,14 @@ public class PagingProgressView: UIView, OnboardingProgressViewProtocol {
         }
     }
     
-    private func updateFading() {
+    fileprivate func updateFading() {
         if fadePageControlOnLastPage {
             if self.currentPage == (self.numberOfPages - 1) {
-                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                UIView.animate(withDuration: 0.3, animations: { () -> Void in
                     self.pageControl.alpha = 0.0
                 })
             } else {
-                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                UIView.animate(withDuration: 0.3, animations: { () -> Void in
                     self.pageControl.alpha = 1.0
                 })
             }
@@ -140,14 +140,14 @@ public class PagingProgressView: UIView, OnboardingProgressViewProtocol {
         }
     }
     
-    private func updateSkipFading() {
+    fileprivate func updateSkipFading() {
         if fadeSkipButtonOnLastPage {
             if self.currentPage == (self.numberOfPages - 1) {
-                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                UIView.animate(withDuration: 0.3, animations: { () -> Void in
                     self.skipButton.alpha = 0.0
                 })
             } else {
-                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                UIView.animate(withDuration: 0.3, animations: { () -> Void in
                     self.skipButton.alpha = 1.0
                 })
             }
@@ -156,7 +156,7 @@ public class PagingProgressView: UIView, OnboardingProgressViewProtocol {
         }
     }
     
-    private func pageIndexForCompletionPercent(percent:CGFloat) -> Int {
+    fileprivate func pageIndexForCompletionPercent(_ percent:CGFloat) -> Int {
         let rangeForPage = 1.0 / CGFloat(numberOfPages - 1)
         let index = Int(round( (percent) / rangeForPage ))
         return index

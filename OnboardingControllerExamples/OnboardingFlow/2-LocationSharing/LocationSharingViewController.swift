@@ -18,16 +18,16 @@ class LocationSharingViewController: UIViewController {
         super.viewDidLoad()
         
         // show the onboarding background by making our view transparent
-        self.view.backgroundColor = UIColor.clearColor()
+        self.view.backgroundColor = UIColor.clear
         
         // style the buttons
-        self.skipButton?.backgroundColor = UIColor.blueColor()
-        self.skipButton?.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        self.skipButton?.backgroundColor = UIColor.blue
+        self.skipButton?.setTitleColor(UIColor.white, for: UIControlState())
         self.skipButton?.layer.cornerRadius = 30.0
 
 
-        self.locationButton?.backgroundColor = UIColor.blueColor()
-        self.locationButton?.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        self.locationButton?.backgroundColor = UIColor.blue
+        self.locationButton?.setTitleColor(UIColor.white, for: UIControlState())
         self.locationButton?.layer.cornerRadius = 30.0
     }
     
@@ -35,11 +35,11 @@ class LocationSharingViewController: UIViewController {
         // put your custom code here to request location access
         // for the sake of simplicity we use an alert here for this example
         
-        let alertController = UIAlertController(title: "Location alert example", message: "Implement your location request logic in your custom viewcontroller", preferredStyle: .Alert)
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        alertController.addAction( UIAlertAction(title: "OK", style: .Default, handler: nil))
+        let alertController = UIAlertController(title: "Location alert example", message: "Implement your location request logic in your custom viewcontroller", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertController.addAction( UIAlertAction(title: "OK", style: .default, handler: nil))
     
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     // MARK: - User action

@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class BoxViewController: UIViewController, OnboardingContentViewController {
+open class BoxViewController: UIViewController, OnboardingContentViewController {
 
     @IBOutlet var imageView:UIImageView?
     @IBOutlet var titleLabel:UILabel?
@@ -37,34 +37,34 @@ public class BoxViewController: UIViewController, OnboardingContentViewControlle
     
     // MARK: -
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
 
         // clip content so no overlapping will occur between onboarding content
         self.view.clipsToBounds = true
         
         // set background to transparent so we can see the background view of OnboardingController
-        self.view.backgroundColor = UIColor.clearColor()
+        self.view.backgroundColor = UIColor.clear
 
         self.imageView?.image = self.image
         self.titleLabel?.text = self.titleText
         self.bodyLabel?.text = self.bodyText
         
-        self.button?.setTitle(self.buttonText, forState: .Normal)
+        self.button?.setTitle(self.buttonText, for: UIControlState())
 
-        self.button?.layer.borderColor = UIColor.blackColor().CGColor
+        self.button?.layer.borderColor = UIColor.black.cgColor
         self.button?.layer.borderWidth = 1.0
         self.button?.layer.cornerRadius = 5.0
     }
     
     // MARK: - OnboardingAnimatedContentViewController
     
-    public func setVisibilityPercent(percent: CGFloat) {
+    open func setVisibilityPercent(_ percent: CGFloat) {
         self.currentVisibilityPercent = percent
         self.updateImageViewHorizontalCenterConstraint()
     }
     
-    override public func updateViewConstraints() {
+    override open func updateViewConstraints() {
         super.updateViewConstraints()
         self.updateImageViewHorizontalCenterConstraint()
     }

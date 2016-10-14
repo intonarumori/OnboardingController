@@ -18,16 +18,16 @@ class ModalExampleViewController: UIViewController, EmptyModalViewControllerDele
         super.viewDidLoad()
         
         // show the onboarding background by making our view transparent
-        self.view.backgroundColor = UIColor.clearColor()
+        self.view.backgroundColor = UIColor.clear
         
         // style the buttons
-        self.skipButton?.backgroundColor = UIColor.blueColor()
-        self.skipButton?.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        self.skipButton?.backgroundColor = UIColor.blue
+        self.skipButton?.setTitleColor(UIColor.white, for: UIControlState())
         self.skipButton?.layer.cornerRadius = 30.0
         
         
-        self.modalButton?.backgroundColor = UIColor.blueColor()
-        self.modalButton?.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        self.modalButton?.backgroundColor = UIColor.blue
+        self.modalButton?.setTitleColor(UIColor.white, for: UIControlState())
         self.modalButton?.layer.cornerRadius = 30.0
     }
     
@@ -43,16 +43,16 @@ class ModalExampleViewController: UIViewController, EmptyModalViewControllerDele
         let exampleModalViewController = EmptyModalViewController()
         let navigationController = UINavigationController(rootViewController: exampleModalViewController)
         exampleModalViewController.delegate = self
-        self.presentViewController(navigationController, animated: true, completion: nil)
+        self.present(navigationController, animated: true, completion: nil)
     }
 
     // MARK: EmptyModalViewController delegate
     
     func emptyModalViewController(didFinish exampleModalViewController: EmptyModalViewController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }

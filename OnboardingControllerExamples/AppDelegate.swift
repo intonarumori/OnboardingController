@@ -14,17 +14,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OnboardingControllerDeleg
     var window: UIWindow?
     var navigationController:UINavigationController?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.backgroundColor = UIColor.whiteColor()
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.backgroundColor = UIColor.white
 
         let onboardingController = self.createMainOnboardingControllerExample()
         onboardingController.delegate = self
         
         // create a UINavigationController so we can transition to the examples list later
         let navigationController = UINavigationController(rootViewController: onboardingController)
-        navigationController.navigationBarHidden = true
+        navigationController.isNavigationBarHidden = true
         self.navigationController = navigationController
 
         self.window?.rootViewController = navigationController
@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OnboardingControllerDeleg
     func createMainOnboardingControllerExample() -> OnboardingController {
 
         let progressView = PagingProgressView()
-        progressView.skipButton.addTarget(self, action: #selector(skipOnboarding), forControlEvents: .TouchUpInside)
+        progressView.skipButton.addTarget(self, action: #selector(skipOnboarding), for: .touchUpInside)
         
         let onboardingController = OnboardingController(
             viewControllers: [
@@ -60,12 +60,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OnboardingControllerDeleg
     
     // MARK: -
     
-    func onboardingController(onboardingController: OnboardingController, didScrollToViewController viewController: UIViewController) {
+    func onboardingController(_ onboardingController: OnboardingController, didScrollToViewController viewController: UIViewController) {
         // whenever onboardingcontroller scrolls and stops at a viewcontroller, this delegate method will be called
         // print("OnboardingController did scroll to viewController: \(viewController)")
     }
     
-    func onboardingControllerDidFinish(onboardingController: OnboardingController) {
+    func onboardingControllerDidFinish(_ onboardingController: OnboardingController) {
         self.skipOnboarding()
     }
 }
