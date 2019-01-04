@@ -11,17 +11,17 @@ import MediaPlayer
 
 class VideoBackgroundView: UIView {
 
-    var videoURL:URL!
-    var moviePlayerController:MPMoviePlayerController!
-    
+    var videoURL: URL!
+    var moviePlayerController: MPMoviePlayerController!
+
     deinit {
         self.stopPlaying()
         self.moviePlayerController = nil
     }
-    
-    init(videoURL:URL) {
-        super.init(frame: CGRect.zero)
-        
+
+    init(videoURL: URL) {
+        super.init(frame: .zero)
+
         self.backgroundColor = UIColor.black
         self.videoURL = videoURL
 
@@ -30,16 +30,15 @@ class VideoBackgroundView: UIView {
         self.moviePlayerController.repeatMode = MPMovieRepeatMode.one
         self.moviePlayerController.controlStyle = MPMovieControlStyle.none
         self.addSubview(self.moviePlayerController.view)
-        
+
         self.startPlaying()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func startListeningToApplicationNotifications() {
-        
         /*
         NSNotificationCenter.defaultCenter().addObserver(
             self,
@@ -48,25 +47,25 @@ class VideoBackgroundView: UIView {
             object: nil)
          */
     }
-    
+
     func stopListeningToApplicationNotifications() {
         NotificationCenter.default.removeObserver(self,
                                                   name: UIApplication.willEnterForegroundNotification,
             object: nil)
     }
-    
+
     func startPlaying() {
         self.moviePlayerController.play()
     }
-    
+
     func stopPlaying() {
         if self.moviePlayerController.playbackState == .playing {
             self.moviePlayerController.stop()
         }
     }
-    
+
     // MARK: -
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         self.moviePlayerController.view.frame = self.bounds

@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocationSharingViewController" customModule="OnboardingControllerExamples" customModuleProvider="target">
@@ -19,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9x1-cA-82Q">
-                    <rect key="frame" x="131" y="459" width="101" height="58"/>
+                    <rect key="frame" x="131" y="458.5" width="101" height="58"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                     <state key="normal" title="Not now"/>
@@ -28,7 +32,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZP-Xc-DYI">
-                    <rect key="frame" x="76" y="371" width="211" height="58"/>
+                    <rect key="frame" x="76" y="370.5" width="211" height="58"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                     <state key="normal" title="Enable location sharing"/>
@@ -37,19 +41,19 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This page is an example of how you would add more buttons for ex. location priming" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUF-ob-hHs">
-                    <rect key="frame" x="62" y="270" width="239" height="61"/>
+                    <rect key="frame" x="62" y="269.5" width="239" height="61"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add any view controller to your flow" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qs-8J-DjN">
-                    <rect key="frame" x="62" y="118" width="239" height="122"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add any view controller to your flow" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qs-8J-DjN">
+                    <rect key="frame" x="30" y="157.5" width="303" height="81.5"/>
                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="34"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="JUF-ob-hHs" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="EcA-po-FAf"/>
                 <constraint firstItem="PZP-Xc-DYI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="HFC-C5-VA8"/>
@@ -58,8 +62,8 @@
                 <constraint firstItem="JUF-ob-hHs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="62" id="QVh-hT-3ds"/>
                 <constraint firstItem="9x1-cA-82Q" firstAttribute="top" secondItem="PZP-Xc-DYI" secondAttribute="bottom" constant="30" id="R2c-sK-ydR"/>
                 <constraint firstItem="JUF-ob-hHs" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="bIa-5X-RD5"/>
-                <constraint firstAttribute="trailing" secondItem="0qs-8J-DjN" secondAttribute="trailing" constant="62" id="dFN-8p-hcc"/>
-                <constraint firstItem="0qs-8J-DjN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="62" id="e5D-Nf-7RG"/>
+                <constraint firstAttribute="trailing" secondItem="0qs-8J-DjN" secondAttribute="trailing" constant="30" id="dFN-8p-hcc"/>
+                <constraint firstItem="0qs-8J-DjN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="e5D-Nf-7RG"/>
                 <constraint firstItem="JUF-ob-hHs" firstAttribute="top" secondItem="0qs-8J-DjN" secondAttribute="bottom" constant="30.5" id="mWa-o3-os8"/>
                 <constraint firstAttribute="trailing" secondItem="JUF-ob-hHs" secondAttribute="trailing" constant="62" id="sbn-Hy-BUH"/>
             </constraints>

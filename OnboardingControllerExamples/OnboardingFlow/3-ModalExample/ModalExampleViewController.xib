@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ModalExampleViewController" customModule="OnboardingControllerExamples" customModuleProvider="target">
@@ -37,25 +41,25 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OnboardingController will preserve the state of the onboarding when you come back" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LN8-h8-1Dk">
-                    <rect key="frame" x="62" y="260" width="239" height="81"/>
+                    <rect key="frame" x="62" y="259.5" width="239" height="81.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Present modal views from your page" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cU-xL-DeA">
-                    <rect key="frame" x="62" y="107" width="239" height="122"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Present modal views" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cU-xL-DeA">
+                    <rect key="frame" x="30" y="188" width="303" height="41"/>
                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="34"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="LN8-h8-1Dk" firstAttribute="centerX" secondItem="od9-0Y-lAM" secondAttribute="centerX" id="3rk-Ru-Y0c"/>
                 <constraint firstItem="Y1I-T9-yQP" firstAttribute="top" secondItem="H9O-vs-X2a" secondAttribute="bottom" constant="30" id="4jG-48-0l2"/>
-                <constraint firstAttribute="trailing" secondItem="4cU-xL-DeA" secondAttribute="trailing" constant="62" id="8nt-ok-D7x"/>
+                <constraint firstAttribute="trailing" secondItem="4cU-xL-DeA" secondAttribute="trailing" constant="30" id="8nt-ok-D7x"/>
                 <constraint firstItem="H9O-vs-X2a" firstAttribute="top" secondItem="LN8-h8-1Dk" secondAttribute="bottom" constant="40" id="8re-Ti-d4W"/>
-                <constraint firstItem="4cU-xL-DeA" firstAttribute="leading" secondItem="od9-0Y-lAM" secondAttribute="leading" constant="62" id="Gxw-E8-IJP"/>
+                <constraint firstItem="4cU-xL-DeA" firstAttribute="leading" secondItem="od9-0Y-lAM" secondAttribute="leading" constant="30" id="Gxw-E8-IJP"/>
                 <constraint firstItem="Y1I-T9-yQP" firstAttribute="centerX" secondItem="od9-0Y-lAM" secondAttribute="centerX" id="MjF-Xm-ggS"/>
                 <constraint firstItem="LN8-h8-1Dk" firstAttribute="top" secondItem="4cU-xL-DeA" secondAttribute="bottom" constant="30.5" id="QER-Jy-VjX"/>
                 <constraint firstItem="LN8-h8-1Dk" firstAttribute="centerY" secondItem="od9-0Y-lAM" secondAttribute="centerY" id="ac6-eU-hpZ"/>

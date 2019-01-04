@@ -10,20 +10,20 @@ import UIKit
 
 class BackgroundDescriptionViewController: UIViewController {
 
-    @IBOutlet var button:UIButton?
-    
+    @IBOutlet var button: UIButton?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // show the onboarding background by making our view transparent
         self.view.backgroundColor = UIColor.clear
-        
+
         // style the button
         self.button?.backgroundColor = UIColor.blue
         self.button?.setTitleColor(UIColor.white, for: .normal)
         self.button?.layer.cornerRadius = 30.0
     }
-    
+
     @IBAction func next() {
         self.onboardingController?.moveToNext(true)
     }

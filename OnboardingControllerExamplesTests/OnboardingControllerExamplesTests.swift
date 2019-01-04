@@ -10,13 +10,12 @@ import XCTest
 @testable import OnboardingControllerExamples
 
 class OnboardingControllerExamplesTests: XCTestCase {
-    
+
     override func setUp() {
         super.setUp()
     }
-    
+
     override func tearDown() {
         super.tearDown()
     }
-    
 }

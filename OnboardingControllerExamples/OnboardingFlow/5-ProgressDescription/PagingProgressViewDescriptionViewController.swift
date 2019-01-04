@@ -10,26 +10,25 @@ import UIKit
 
 class PagingProgressViewDescriptionViewController: UIViewController {
 
-    @IBOutlet var button:UIButton?
-    
+    @IBOutlet weak var button: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // show the onboarding background by making our view transparent
-        self.view.backgroundColor = UIColor.clear
-        
+        self.view.backgroundColor = .clear
+
         // style the button
-        self.button?.backgroundColor = UIColor.blue
-        self.button?.setTitleColor(UIColor.white, for: .normal)
-        self.button?.layer.cornerRadius = 30.0
+        button.backgroundColor = .blue
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 30.0
     }
-    
+
     @IBAction func next() {
         self.onboardingController?.moveToNext(true)
     }
-    
-    
-    override var preferredStatusBarStyle : UIStatusBarStyle {
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
 }

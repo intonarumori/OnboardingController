@@ -9,22 +9,23 @@
 import UIKit
 
 protocol EmptyModalViewControllerDelegate: class {
-    func emptyModalViewController(didFinish emptyModalViewController:EmptyModalViewController)
+    func emptyModalViewController(didFinish emptyModalViewController: EmptyModalViewController)
 }
 
 class EmptyModalViewController: UIViewController {
 
-    weak var delegate:EmptyModalViewControllerDelegate?
-    
+    weak var delegate: EmptyModalViewControllerDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .done, target: self, action: #selector(done))
     }
 
-    // MARK: User actions
-    
+    // MARK: - User actions
+
     @objc func done() {
-        self.delegate?.emptyModalViewController(didFinish: self)
+        delegate?.emptyModalViewController(didFinish: self)
     }
 }
