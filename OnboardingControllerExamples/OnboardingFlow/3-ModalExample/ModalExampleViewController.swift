@@ -22,12 +22,12 @@ class ModalExampleViewController: UIViewController, EmptyModalViewControllerDele
         
         // style the buttons
         self.skipButton?.backgroundColor = UIColor.blue
-        self.skipButton?.setTitleColor(UIColor.white, for: UIControlState())
+        self.skipButton?.setTitleColor(UIColor.white, for: .normal)
         self.skipButton?.layer.cornerRadius = 30.0
         
         
         self.modalButton?.backgroundColor = UIColor.blue
-        self.modalButton?.setTitleColor(UIColor.white, for: UIControlState())
+        self.modalButton?.setTitleColor(UIColor.white, for: .normal)
         self.modalButton?.layer.cornerRadius = 30.0
     }
     

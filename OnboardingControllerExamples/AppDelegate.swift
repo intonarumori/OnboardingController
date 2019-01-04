@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OnboardingControllerDeleg
     var window: UIWindow?
     var navigationController:UINavigationController?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = UIColor.white
@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OnboardingControllerDeleg
         let onboardingController = OnboardingController(
             viewControllers: [
                 //UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewControllerWithIdentifier("Example1"),
-                WelcomeViewController(),
+                UIStoryboard(name: "OnboardingFlow", bundle: nil).instantiateViewController(withIdentifier: "WelcomeViewController"),
                 LocationSharingViewController(),
                 ModalExampleViewController(),
                 BackgroundDescriptionViewController(),
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OnboardingControllerDeleg
         return onboardingController
     }
     
-    func skipOnboarding() {
+    @objc func skipOnboarding() {
         // replace the onboardingcontroller with the example list
         self.navigationController?.setViewControllers([ExamplesViewController()], animated: true)
     }

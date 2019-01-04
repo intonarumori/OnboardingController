@@ -64,7 +64,7 @@ open class PagingProgressView: UIView, OnboardingProgressViewProtocol {
         self.pageControl = pageControl
     }
     
-    func pageValueChanged(_ pageControl:UIPageControl) {
+    @objc func pageValueChanged(_ pageControl:UIPageControl) {
         if currentPage < pageControl.currentPage {
             self.onboardingController?.moveToNext(true)
         }
@@ -75,8 +75,8 @@ open class PagingProgressView: UIView, OnboardingProgressViewProtocol {
     
     func createSkipButton() {
         let button = UIButton()
-        button.setTitle("Skip", for: UIControlState())
-        button.setTitleColor(UIColor.black, for: UIControlState())
+        button.setTitle("Skip", for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14.0)
         button.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(button)

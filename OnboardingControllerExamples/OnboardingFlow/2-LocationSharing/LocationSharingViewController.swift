@@ -22,12 +22,12 @@ class LocationSharingViewController: UIViewController {
         
         // style the buttons
         self.skipButton?.backgroundColor = UIColor.blue
-        self.skipButton?.setTitleColor(UIColor.white, for: UIControlState())
+        self.skipButton?.setTitleColor(UIColor.white, for: .normal)
         self.skipButton?.layer.cornerRadius = 30.0
 
 
         self.locationButton?.backgroundColor = UIColor.blue
-        self.locationButton?.setTitleColor(UIColor.white, for: UIControlState())
+        self.locationButton?.setTitleColor(UIColor.white, for: .normal)
         self.locationButton?.layer.cornerRadius = 30.0
     }
     

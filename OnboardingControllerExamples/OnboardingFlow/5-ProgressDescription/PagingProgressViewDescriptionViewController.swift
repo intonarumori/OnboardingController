@@ -20,7 +20,7 @@ class PagingProgressViewDescriptionViewController: UIViewController {
         
         // style the button
         self.button?.backgroundColor = UIColor.blue
-        self.button?.setTitleColor(UIColor.white, for: UIControlState())
+        self.button?.setTitleColor(UIColor.white, for: .normal)
         self.button?.layer.cornerRadius = 30.0
     }
     

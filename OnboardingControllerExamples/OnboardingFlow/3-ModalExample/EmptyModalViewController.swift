@@ -24,7 +24,7 @@ class EmptyModalViewController: UIViewController {
 
     // MARK: User actions
     
-    func done() {
+    @objc func done() {
         self.delegate?.emptyModalViewController(didFinish: self)
     }
 }

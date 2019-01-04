@@ -51,7 +51,7 @@ class VideoBackgroundView: UIView {
     
     func stopListeningToApplicationNotifications() {
         NotificationCenter.default.removeObserver(self,
-            name: NSNotification.Name.UIApplicationWillEnterForeground,
+                                                  name: UIApplication.willEnterForegroundNotification,
             object: nil)
     }
     

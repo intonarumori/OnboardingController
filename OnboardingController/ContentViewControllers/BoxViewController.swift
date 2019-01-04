@@ -50,7 +50,7 @@ open class BoxViewController: UIViewController, OnboardingContentViewController 
         self.titleLabel?.text = self.titleText
         self.bodyLabel?.text = self.bodyText
         
-        self.button?.setTitle(self.buttonText, for: UIControlState())
+        self.button?.setTitle(self.buttonText, for: .normal)
 
         self.button?.layer.borderColor = UIColor.black.cgColor
         self.button?.layer.borderWidth = 1.0

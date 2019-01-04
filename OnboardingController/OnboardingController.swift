@@ -86,6 +86,14 @@ public protocol OnboardingControllerDelegate : class {
     func onboardingControllerDidFinish(_ onboardingController:OnboardingController)
 }
 
+
+// MARK: -
+
+public enum OnboardingProgressViewPlacement {
+    case top
+    case bottom
+}
+
 // MARK: -
 
 open class OnboardingController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate {
@@ -95,16 +103,18 @@ open class OnboardingController: UIViewController, UIPageViewControllerDataSourc
     open fileprivate(set) var progressView:UIView?
     open fileprivate(set) var backgroundContentView:UIView?
     open fileprivate(set) var viewControllers:Array<UIViewController> = []
+    private var progressViewPlacement:OnboardingProgressViewPlacement = .bottom
     
     fileprivate weak var currentViewController:UIViewController?
     
     fileprivate var scrollViewUpdatesEnabled:Bool = true
     open fileprivate(set) var pageViewController:UIPageViewController?
     
-    public init(viewControllers:Array<UIViewController>, backgroundContentView:UIView? = nil, progressView:UIView? = nil) {
+    public init(viewControllers:Array<UIViewController>, backgroundContentView:UIView? = nil, progressView:UIView? = nil, progressViewPlacement:OnboardingProgressViewPlacement = .bottom) {
         super.init(nibName: nil, bundle: nil)
         self.backgroundContentView = backgroundContentView
         self.progressView = progressView
+        self.progressViewPlacement = progressViewPlacement
         self.viewControllers = viewControllers
         self.automaticallyAdjustsScrollViewInsets = false
     }
@@ -120,8 +130,8 @@ open class OnboardingController: UIViewController, UIPageViewControllerDataSourc
         self.view = view
         
         let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-        pageViewController.willMove(toParentViewController: self)
-        self.addChildViewController(pageViewController)
+        pageViewController.willMove(toParent: self)
+        self.addChild(pageViewController)
         pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(pageViewController.view)
         self.pageViewController = pageViewController
@@ -149,7 +159,7 @@ open class OnboardingController: UIViewController, UIPageViewControllerDataSourc
                 multiplier: 1.0, constant: 0.0)
         ])
         
-        pageViewController.didMove(toParentViewController: self)
+        pageViewController.didMove(toParent: self)
         pageViewController.view.backgroundColor = UIColor.clear
         
         pageViewController.delegate = self
@@ -157,9 +167,21 @@ open class OnboardingController: UIViewController, UIPageViewControllerDataSourc
 
         if let progressView = self.progressView {
             let progressViewHeight = progressView.frame.size.height
-            progressView.frame = CGRect(x: 0, y: self.view.bounds.size.height-progressViewHeight, width: self.view.bounds.size.width, height: progressViewHeight)
-            progressView.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
+            progressView.translatesAutoresizingMaskIntoConstraints = false
             self.view.addSubview(progressView)
+
+            self.view.addConstraints([
+                NSLayoutConstraint(item: progressView, attribute: .bottom, relatedBy: .equal,
+                                   toItem: self.bottomLayoutGuide, attribute: .top, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: progressView, attribute: .leading, relatedBy: .equal,
+                                   toItem: self.view, attribute: .leading, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: progressView, attribute: .trailing, relatedBy: .equal,
+                                   toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 0.0),
+                ])
+            progressView.addConstraint(
+                NSLayoutConstraint(item: progressView, attribute: .height, relatedBy: .equal,
+                                   toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: progressViewHeight)
+            )
         }
         
         if let backgroundContentView = self.backgroundContentView {
@@ -199,6 +221,9 @@ open class OnboardingController: UIViewController, UIPageViewControllerDataSourc
         if let scrollView = self.pageViewControllerScrollView() {
             self.updatePercentagesWithScrollView(scrollView, animated: false)
         }
+        
+//        let constraint = self.view.constraintFor(firstItem:pageViewController!.bottomLayoutGuide, secondItem:nil)
+//        print(constraint)
     }
     
     // MARK: -
@@ -450,10 +475,30 @@ open class OnboardingController: UIViewController, UIPageViewControllerDataSourc
     
     // Status bar handling
     
-    override open var childViewControllerForStatusBarHidden : UIViewController? {
+    override open var childForStatusBarHidden : UIViewController? {
         return currentViewController
     }
-    override open var childViewControllerForStatusBarStyle : UIViewController? {
+    
+    override open var childForStatusBarStyle : UIViewController? {
         return currentViewController
+    }
+}
+
+
+// MARK: -
+
+extension UIView {
+    
+    func constraintFor(firstItem:AnyObject, secondItem:AnyObject?) -> NSLayoutConstraint? {
+        for constraint in constraints {
+            if constraint.firstItem === firstItem && constraint.secondItem == nil {
+                return constraint
+            }
+//            print(constraint)
+//            print("constraint: \(constraint.firstItem) \(constraint.firstAttribute) \(constraint.secondItem) \(constraint.secondAttribute) \(constraint.constant)")
+//
+//            print("----------")
+        }
+        return nil
     }
 }

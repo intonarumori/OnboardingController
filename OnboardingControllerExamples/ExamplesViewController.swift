@@ -20,10 +20,10 @@ class ExamplesViewController: UITableViewController, OnboardingControllerDelegat
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
 
         self.items = [
-            ExampleItem(title: "Parallax with progress fading", action: { [weak self] _ in
+            ExampleItem(title: "Parallax with progress fading", action: { [unowned self] in
                 
                 let progressView = PagingProgressView()
-                progressView.skipButton.addTarget(self, action: #selector(self?.closeOnboarding), for: .touchUpInside)
+                progressView.skipButton.addTarget(self, action: #selector(self.closeOnboarding), for: .touchUpInside)
                 
                 let onboardingController = OnboardingController(
                     viewControllers: [
@@ -36,7 +36,7 @@ class ExamplesViewController: UITableViewController, OnboardingControllerDelegat
                     progressView: progressView
                 )
                 onboardingController.delegate = self
-                self?.present(onboardingController, animated: true, completion: nil)
+                self.present(onboardingController, animated: true, completion: nil)
                 
             })
             /*
@@ -143,7 +143,7 @@ class ExamplesViewController: UITableViewController, OnboardingControllerDelegat
 
     // MARK: - user actions
     
-    func closeOnboarding() {
+    @objc func closeOnboarding() {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -193,10 +193,10 @@ class ExamplesViewController: UITableViewController, OnboardingControllerDelegat
 
 /// Helper class for the example list
 class ExampleItem {
-    var title:String = ""
-    var action:(Void)->Void
+    var title: String = ""
+    var action: () -> Void
     
-    init(title:String, action:@escaping (Void)->Void) {
+    init(title: String, action: @escaping () -> Void) {
         self.title = title
         self.action = action
     }
